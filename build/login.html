@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UAP</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/style.css">
+
+
+    <style>
+        body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.login-container {
+    max-width: 400px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+.form-container {
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.error-message {
+    color: red;
+    margin-top: 10px;
+}
+
+    </style>
+</head>
+
+<body>
+    <section>
+        <main>
+
+            <body>
+                <div class="login-container">
+                    <h1>Masukkan Nama dan Kode Akses</h1>
+                    <div id="error-message" class="error-message"></div>
+                    <div class="form-container">
+                        <label for="nama">Nama:</label>
+                        <input type="text" id="nama" placeholder="Masukkan nama">
+                        
+                        <label for="kodeAkses">Kode Akses:</label>
+                        <input type="password" id="kodeAkses" placeholder="Masukkan kode akses">
+            
+                        <button onclick="cekKodeAkses()">Masuk</button>
+                    </div>
+                </div>
+
+
+                <script src="/build/js/login.js"></script>
+            </body>
+        </main>
+    </section>
+</body>
+
+<!-- <script src="https://unpkg.com/lucide@latest"></script> -->
+<!-- <script src="js/script.js"></script> -->
+<script>
+    lucide.createIcons();
+</script>
+
+</html>
+
+
+
+
+
+<!-- text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-400 -->
