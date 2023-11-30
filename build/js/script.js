@@ -1,39 +1,43 @@
-document.addEventListener("DOMContentLoaded", function () {
-    // Get the elements
-    var navbarAtas = document.querySelector('.navbar-atas');
-    var menuBawah = document.querySelector('.menu-bawah');
-    var twoLineButton = document.querySelector('.two-line');
-    
-    function toggleNavbarVisibility(event) {
-        event.preventDefault(); // Prevent the default behavior (page refresh)
-        if (navbarAtas.style.display === 'flex') {
-            navbarAtas.style.display = 'none';
-            menuBawah.style.display = 'flex';
-        } else {
-            navbarAtas.style.display = 'flex';
-            menuBawah.style.display = 'none';
-        }
-    }
-    if (navbarAtas && menuBawah && twoLineButton) {
-        function handleScroll() {
-            var scrollPosition = window.scrollY || window.pageYOffset;
+var dataBahan = {
+    'Beras giling, mentah': {
+        'Protein': 8.4,
+        'Karbohidrat': 77.1,
+        'Lemak': 1.7,
+        'BDD': 12.0,
+        // Tambahkan zat gizi lain jika diperlukan
+    },
+    'Beras giling var pelita, mentah': {
+        'Protein': 9.5,
+        'Karbohidrat': 77.1,
+        'Lemak': 1.4,
+        'BDD': 11.4,
+        // Tambahkan zat gizi lain jika diperlukan
+    },
+    'Beras giling var rojolele, mentah': {
+        'Protein': 8.4,
+        'Karbohidrat': 77.1,
+        'Lemak': 1.7,
+        'BDD': 12.0,
+        // Tambahkan zat gizi lain jika diperlukan
+    },
+    // Tambahkan data bahan lain sesuai kebutuhan
+};
 
-            if (scrollPosition < 480) {
-                navbarAtas.style.display = 'none';
-                menuBawah.style.display = 'flex';
-            } else if (scrollPosition < 590 ){
-                navbarAtas.style.display = 'flex';
-                menuBawah.style.display = 'none';
-            }
-        }
+function hitungZatGizi() {
+    // Ambil nilai dari input
+    var namaBahan = document.getElementById('namaBahan').value;
+    var namaZat = document.getElementById('namaZat').value;
+    var beratBahan = parseFloat(document.getElementById('beratBahan').value);
 
-        
+    // Cek apakah bahan dan zat gizi ada dalam database
+    if (dataBahan[namaBahan] && dataBahan[namaBahan][namaZat] !== undefined) {
+        // Hitung zat gizi
+        var zatGiziPer100g = dataBahan[namaBahan][namaZat];
+        var hasil = (beratBahan / 100) * zatGiziPer100g;
 
-        window.addEventListener('scroll', handleScroll);
-        twoLineButton.addEventListener('click', toggleNavbarVisibility);
-
-        handleScroll();
+        // Tampilkan hasil
+        document.getElementById('hasil').innerText = hasil.toFixed(2) + " gram " + namaZat;
     } else {
-        console.error('Error broo');
+        alert("Bahan atau zat gizi tidak ditemukan dalam database.");
     }
-});
+}

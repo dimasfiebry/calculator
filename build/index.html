@@ -5,290 +5,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UAP</title>
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/build/css/index.css">
+    <link rel="stylesheet" href="/build/css/style.css">
 
 </head>
 
 <body>
-    <nav class="fixed flex flex-row justify-centerpy-10  ">
-        <div class=" flex flex-col h-screen w-20 items-end mt-8 space-y-36 ">
-            <a href=""
-                class="two-line flex flex-row text-white text-4xl h-9 w-14 items-center pl-4 font-bold mr-2 hover:rotate-[270deg] hover:text-purple-700  transition duration-[0.6s]">
-                <p>|</p>
-                <p>|</p>
-            </a>
-            <a href="#" class="flex flex-col mr-[10px] font-semibold text-xl">
-                <h1
-                    class="-rotate-90 mt-[90px] text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">
-                    Fiebry</h1>
-                <h1 class="text-white -rotate-90 mt-11">Dimas</h1>
-            </a>
-        </div>
-        <div
-            class="navbar-atas flex flex-row h-20 items-center w-screen text-gray-400 font-[400] text-sm pl-56 backdrop-blur-sm border-b-[0.8px] dark:border-[#1c1c1c66] z-20 transition-all">
+    <section>
+        <main>
 
-            <ul class="flex flex-row space-x-16">
-                <li>
-                    <a class=" text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-400"
-                        href="#">Profiles</a>
-                </li>
-                <li>
-                    <a href="#">Experiences</a>
-                </li>
-                <li>
-                    <a href="#">Project</a>
-                </li>
-                <li>
-                    <a href="#">Abouts</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+            <body>
+                <h1>Kalkulator Zat Gizi</h1>
 
-    <section class=" bg-black w-screen md:">
-        <main class="flex h-screen w-full flex-col items-start  pl-52 pt-28"
-            style="background-image: url('img/DF-2.png'); background-size: cover;">
-            <div class="ml-24 mt-20 h-52  w-[48%] space-y-12">
-                <h1 class="text-white font-extrabold text-6xl"> <span
-                        class="hi text-transparent bg-clip-text bg-gradient-to-r from-purple-800 to-purple-400 animate-pulse shadow-transparent ">Hi,</span>
-                    I am Dimas</h1>
-                <p id="deskripsi" class="deskripsi text-white font-thin text-justify tracking-wide leading-8">
-                    I am a student at <a
-                        class="ub text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500 font-medium hover:text-lg text-justify hover:animate-bounce hover:ml-2"
-                        href="https://ub.ac.id/id/" id="UB">Brawijaya University
-                    </a> aspiring
-                    to become a software engineer. My academic journey
-                    focuses on acquiring the skills and knowledge necessary
-                    to excel in the field of software development.
-                </p>
-            </div>
-            <div class="menu-bawah text-gray-400 font-[400] text-sm flex flex-row pl-24 pt-28">
-                <ul class="flex flex-row space-x-16">
-                    <li>
-                        <a class="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-400"
-                            href="#">Profiles</a>
-                    </li>
-                    <li>
-                        <a href="#">Experiences</a>
-                    </li>
-                    <li>
-                        <a href="#">Project</a>
-                    </li>
-                    <li>
-                        <a href="#">Abouts</a>
-                    </li>
-                </ul>
-            </div>
-        </main>
-    </section>
+                <label for="namaBahan">Nama Bahan: </label>
+                <input type="text" id="namaBahan" list="daftarBahan" placeholder="Masukkan nama bahan">
+                <datalist id="daftarBahan" class="cursor-pointer">
+                    <!-- Isi daftar bahan di sini -->
+                    <option value="Beras giling, mentah">
+                    <option value="Beras giling var pelita, mentah">
+                    <option value="Beras giling var rojolele, mentah">
+                        <!-- Tambahkan bahan lain jika diperlukan -->
+                </datalist>
+                <br>
+
+                <label for="namaZat">Nama Zat Gizi: </label>
+                <input type="text" id="namaZat" list="daftarZat" placeholder="Masukkan nama zat gizi">
+                <datalist id="daftarZat">
+                    <!-- Isi daftar zat gizi di sini -->
+                    <option value="Protein">
+                    <option value="Karbohidrat">
+                    <option value="Lemak">
+                        <!-- Tambahkan zat gizi lain jika diperlukan -->
+                </datalist>
+                <br>
+
+                <label for="beratBahan">Berat Bahan (gram): </label>
+                <input type="number" id="beratBahan" placeholder="Masukkan berat bahan">
+                <br>
+
+                <button onclick="hitungZatGizi()">Hitung</button>
+                <br>
+
+                <p>Hasil: <span id="hasil"></span></p>
 
 
-
-    <!-- Section2 -->
-
-
-    <section class=" e w-screen">
-        <main class="h-screen w-full flex flex-col  ">
-            <div class="flex flex-row pl-52 pt-32">
-                <div class="w-1/2 ml-24 space-y-16 flex flex-col ">
-                    <blockquote class="text-white font-extrabold text-5xl tracking-wide">
-                        Nunc Aut Nunquam
-                    </blockquote>
-                    <p class="deskripsi2  text-white text-justify tracking-wider leading-8 font-thin">
-                        I live by the principle <span
-                            class="now text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500 font-medium text-justify hover:animate-bounce hover:ml-2">Now
-                            or never</span> always seizing
-                        learning opportunities as long as I can. This belief drives
-                        me to continually grow personally, facing
-                        each learning chance with determination and enthusiasm.
-                        I believe continuous learning in <span
-                            class="front text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500 font-medium text-justify hover:animate-bounce hover:ml-2">Front
-                            End Developer</span> unlocks my potential and fulfills life goals
-                    </p>
-                </div>
-                <div
-                    class="flex flex-col text-right w-96 ml-12 h-3/4  pl-16 border-l-[0.3px] border-spacing-x-6 space-y-16 pt-3  text-right tracking-wider leading-8">
-                    <h2 class="text-white font-bold text-2xl">
-                        Send Me Something
-                    </h2>
-                    <p class="text-white font-thin">
-                        Could you please send me a message or a few messages anonymously? Feel free to share any
-                        thoughts or reflections you have in mind. Thank you!
-                    </p>
-                    <button
-                        class="p-[2px] h-12 flex inline-flex bg-gradient-to-r from-purple-400 to-pink-500 hover:bg-gradient-to-l rounded-lg duration-1000 hover:cursor-pointer  hover:transition-all">
-                        <a class="text-white w-full h-full bg-black text-xl font-bold flex flex-col justify-center items-center rounded-lg"
-                            href="https://ngl.link/NGL">Send</a>
-                    </button>
-
-                </div>
-            </div>
-
-            <div class="flex flex-row ml-52 space-y-4">
-                <div class="space-y-12  w-3/5 pr-24 pt-16">
-                    <h1 class="text-white font-extrabold text-5xl tracking-wide ml-24 text-2xl">Social Media</h1>
-                    <p class="text-white text-justify tracking-wider leading-8 font-thin ml-24">
-                        I can assist you in creating <span
-                            class="web text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500 font-medium text-justify hover:animate-bounce hover:ml-2">websites</span>
-                        or <span
-                            class="app text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500 font-medium text-justify hover:animate-bounce hover:ml-2">mobile
-                            applications.</span> Don't forget to follow me online
-                        for updates!
-                    </p>
-                </div>
-
-                <div class="  flex flex-col w-2/5 justify-center items-center">
-                    <div class="flex flex-row  space-x-16">
-                        <div class="container-sosmed flex flex-col bg-gray space-y-12">
-
-                            <p class="teks bg-gray-300 absolute -translate-x-12 rounded-sm p-1 font-medium hidden">
-                                Follow me on <span
-                                    class="text-transparent bg-clip-text bg-gradient-to-l from-purple-600 to-pink-700">Instagram</span>
-                            </p>
-                            <a class=" rounded-lg w-16 h-[58px] flex justify-center"
-                                href="https://www.instagram.com/fiebryhoga/?next=%2F">
-                                <img class="sosmed w-12 cursor-alias " src="img/instagram.svg" alt=""
-                                    id="instagramImage">
-                            </a>
-                        </div>
-                        <div class="container-sosmed flex flex-col bg-gray space-y-12">
-
-                            <p class="teks bg-gray-300 absolute -translate-x-12 rounded-sm p-1 font-medium hidden">My
-                                experiences on <span
-                                    class="text-transparent bg-clip-text bg-gradient-to-l from-purple-600 to-pink-700">LinkedIn</span>
-                            </p>
-                            <a class=" rounded-lg w-16 h-[58px] flex justify-center"
-                                href="https://www.linkedin.com/in/dimas-fiebry-prayhoga-putra-97109729b/">
-                                <img class="sosmed w-12 cursor-alias " src="img/linkedin.svg" alt=""
-                                    id="instagramImage">
-                            </a>
-                        </div>
-                        <div class="container-sosmed flex flex-col bg-gray space-y-12">
-
-                            <p class="teks bg-gray-300 absolute -translate-x-12 rounded-sm p-1 font-medium hidden">See
-                                my project On <span
-                                    class="text-transparent bg-clip-text bg-gradient-to-l from-purple-600 to-pink-700">Git
-                                    Hub</span></p>
-                            <a class=" rounded-lg w-16 h-[58px] flex justify-center"
-                                href="https://github.com/dimasfiebry">
-                                <img class="sosmed w-12 cursor-alias " src="img/github.svg" alt="" id="instagramImage">
-                            </a>
-                        </div>
-
-
-                    </div>
-                    <div class="flex flex-row  space-x-16 justify">
-                        <div class="container-sosmed flex flex-col bg-gray space-y-12">
-
-                            <p class="teks bg-gray-300 absolute -translate-x-12 rounded-sm p-1 font-medium hidden">
-                                Follow my activity on <span
-                                    class="text-transparent bg-clip-text bg-gradient-to-l from-purple-600 to-pink-700">Twitter</span>
-                            </p>
-                            <a class=" rounded-lg w-16 h-[58px] flex justify-center"
-                                href="https://twitter.com/FiebryDimas">
-                                <img class="sosmed w-12 cursor-alias " src="img/twitter.svg" alt="" id="instagramImage">
-                            </a>
-                        </div>
-                        <div class="container-sosmed flex flex-col bg-gray space-y-12">
-
-                            <p class="teks bg-gray-300 absolute -translate-x-12 rounded-sm p-1 font-medium hidden">My
-                                number <span
-                                    class="text-transparent bg-clip-text bg-gradient-to-l from-purple-600 to-pink-700">Phone</span>
-                            </p>
-                            <a class=" rounded-lg w-16 h-[58px] flex justify-center" href="https://wa.me/6285730979537">
-                                <img class="sosmed w-12 cursor-alias " src="img/phone.svg" alt="" id="instagramImage">
-                            </a>
-                        </div>
-                        <div class="container-sosmed flex flex-col bg-gray space-y-12">
-
-                            <p class="teks bg-gray-300 absolute -translate-x-12 rounded-sm p-1 font-medium hidden">Send
-                                u message on <span
-                                    class="text-transparent bg-clip-text bg-gradient-to-l from-purple-600 to-pink-700">Mails</span>
-                            </p>
-                            <a class=" rounded-lg w-16 h-[58px] flex justify-center"
-                                href="mailto:dimasfiebry@student.ub.ac.id">
-                                <img class="sosmed w-12 cursor-alias " src="img/mails.svg" alt="" id="instagramImage">
-                            </a>
-                        </div>
-                    </div>
-
-
-
-
-                </div>
-            </div>
-
-
-
-        </main>
-    </section>
-    <section class="  w-screen">
-        <main class="h-[150vh] w-screen flex flex-col">
-            <div class="ml-52 pl-24 flex-col">
-                <div>
-                    <h2 class="text-white text-6xl font-extrabold tracking-wider">
-                        Experiences
-                    </h2>
-                </div>
-                <div class="mt-20 flex flex-row]">
-                    <p class="text-white text-sm font-medium tracking-wider mr-28 pt-16 font-sans">
-                        <span
-                            class="text-5xl text-transparent font-extrabold bg-clip-text bg-gradient-to-r from-pink-500 to-purple-400">30+</span>
-                        <br> <br> Achievements
-                    </p>
-                    <p class="text-white text-sm font-medium tracking-wide mr-48 pt-16 font-sans">
-                        <span
-                            class="text-5xl font-extrabold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-400 ">6+</span>
-                        <br><br> Years Experiences IT Support <br>and Front End
-                    </p>
-                    <p class="bg-black text-white text-justify w-[430px] leading-8 tracking-wider">
-                        <span class="text-white text-lg font-semibold pb-10">
-                            I derive immense satisfaction from tackling coding challenges, relishing the process of
-                            problem-solving.
-                        </span> <br> <br>Utilizing logical reasoning brings me great joy as I navigate through intricate
-                        code structures. Moreover, I find delight in the creative aspect of designing elegant solutions,
-                        merging functionality with a thoughtful and efficient design.
-                    </p>
-
-                </div>
-                <div class="pt-24 mr-24 flex flex-col space-y-28">
-                    <div class="flex flex-row space-x-24">
-                        <div class="flex flex-col h-52 w-72 rounded-md">
-                            <div class=" h-1/2 object-cover">
-                                <img class="object-cover rounded-md " src="img/ex-1.png" alt="">
-                            </div>
-                        </div>
-                        <div class="flex flex-col h-52 w-72 bg-white rounded-md">
-                            satu
-                        </div>
-                        <div class="flex flex-col h-52 w-72 bg-white rounded-md">
-                            satu
-                        </div>
-                    </div>
-                    <div class="flex flex-row space-x-24">
-                        <div class="flex flex-col h-52 w-72 bg-white rounded-md">
-                            satu
-                        </div>
-                        <div class="flex flex-col h-52 w-72 bg-white rounded-md">
-                            satu
-                        </div>
-                        <div class="flex flex-col h-52 w-72 bg-white rounded-md">
-                            satu
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
+                <script src="/build/js/script.js"></script>
+            </body>
         </main>
     </section>
 </body>
 
-<script src="https://unpkg.com/lucide@latest"></script>
-<script src="js/script.js"></script>
+<!-- <script src="https://unpkg.com/lucide@latest"></script> -->
+<!-- <script src="js/script.js"></script> -->
 <script>
     lucide.createIcons();
 </script>
 
 </html>
+
+
+
+
+
+<!-- text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-400 -->
