@@ -4,100 +4,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UAP</title>
-    <!-- <link rel="stylesheet" href="/css/index.css"> -->
-    <link rel="stylesheet" href="/css/style.css">
+    <title>Kalkulator Gizi</title>
+    <link rel="stylesheet" href="/build/css/login.css">
+    <link rel="stylesheet" href="/build/css/style.css">
 
-
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-        }
-
-        .login-container {
-            max-width: 400px;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-
-        h1 {
-            color: #333;
-        }
-
-        .form-container {
-            margin-top: 20px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            color: #333;
-        }
-
-        input {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-
-        button {
-            width: 100%;
-            padding: 12px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
-
-        .error-message {
-            color: red;
-            margin-top: 10px;
-        }
-    </style>
 </head>
 
 <body>
-    <section>
-        <main>
+    <section class="bg-black h-screen w-screen">
+        <main class="flex flex-col justify-center items-center">
+            <img class="object-cover h-screen w-screen opacity-40" src="/build/img/bg.jpg" alt="">
+            <div class="login-container backdrop-blur-sm h-1/2 w-1/3 border-[0.6px] border-gray-100 rounded-lg absolute space-y-12 pt-10">
+                <h1 class="text-center text-xl font-extrabold text-sky-100 border-b pb-10 font-sans tracking-wide">Login</h1>
+                <div class="absolute text-center text-red-500 font-medium w-full -translate-y-10" id="error-message" class="error-message"></div>
+                <div class="form-container flex flex-col items-center">
+                    <label class="text-white text-lg text-center mb-2 tracking-wider" for="nama">Username</label>
+                    <input class=" w-64 h-8 bg-transparent text-white placeholder:italic pl-6 placeholder:text-xs placeholder:tracking-widest rounded-md border border-slate-400 focus:outline-none" type="text" id="nama" placeholder="ex: rizka">
 
-            <body>
-                <div class="login-container">
-                    <h1>Masukkan Nama dan Kode Akses</h1>
-                    <div id="error-message" class="error-message"></div>
-                    <div class="form-container">
-                        <label for="nama">Nama:</label>
-                        <input type="text" id="nama" placeholder="Masukkan nama">
+                    <label class="text-white text-lg text-center mb-2 pt-6 tracking-wider" for="kodeAkses">Password</label>
+                    <input class="w-64 font-mono tracking-widest h-8 bg-transparent text-white placeholder:italic pl-6 placeholder:text-xs placeholder:tracking-widest rounded-md border border-slate-400 focus:outline-none" type="password" id="kodeAkses" placeholder="ex: 8293838">
 
-                        <label for="kodeAkses">Kode Akses:</label>
-                        <input type="password" id="kodeAkses" placeholder="Masukkan kode akses">
-
-                        <button onclick="cekKodeAkses()">Masuk</button>
-                    </div>
+                    <button class="text-sm font-bold pt-6 font-serif text-green-600 hover:text-green-300 hover:scale-110" onclick="cekKodeAkses()">Masuk</button>
                 </div>
+            </div>
 
 
 
-                <script src="js/dataTest.js"></script>
-                <script src="js/login.js"></script>
-            </body>
+            <script src="js/dataTest.js"></script>
+            <script src="js/login.js"></script>
+
         </main>
     </section>
 </body>
