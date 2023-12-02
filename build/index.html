@@ -14,15 +14,15 @@
     <section class="bg-black h-screen w-screen">
         <main class="flex flex-col justify-center items-center">
             <img class="object-cover h-screen w-screen opacity-40" src="img/bg.jpg" alt="">
-            <div class="login-container backdrop-blur-sm  xl:h-1/2  lg:h-1/2 md:h-1/2 sm:h-1/2 xs:h-1/2 xl:w-1/3 lg:w-1/3 md:w-1/3 sm:w-2/3 xs:w-2/3 border-[0.6px] border-gray-100 rounded-lg absolute space-y-12 pt-10">
-                <h1 class="text-center xl:text-2xl md:text-lg sm:text-sm xs:text-xs text font-extrabold text-sky-100 border-b pb-10 font-sans tracking-wide">Login</h1>
-                <div class="absolute text-center text-red-500 font-medium w-full -translate-y-10" id="error-message" class="error-message"></div>
+            <div class="login-container backdrop-blur-sm  w-64 md:w-72 lg:w-96 border-[0.8px] h-[400px] border-slate-100 rounded-xl absolute space-y-12 pt-10">
+                <h1 class="text-center text-xl font-extrabold text-sky-100 border-b pb-10 font-sans tracking-wide">Login</h1>
+                <div class="absolute text-center text-sm text-red-500 font-medium w-full -translate-y-10" id="error-message" class="error-message"></div>
                 <div class="form-container flex flex-col items-center">
-                    <label class="text-white text-lg sm:text-xl md:text-2xl lg:text-lg text-center mb-2 tracking-wider" for="nama">Username</label>
-                    <input class="  xl:w-64 lg:w-54 md:w-44 sm:w-24 xs:w-18 h-8 bg-transparent text-white placeholder:italic pl-6 placeholder:text-xs placeholder:tracking-widest rounded-md border border-slate-400 focus:outline-none" type="text" id="nama" placeholder="ex: rizka">
+                    <label class="text-white text-sm text-center mb-2 tracking-wider" for="nama">Username</label>
+                    <input class="  xl:w-64 lg:w-54 md:w-44 sm:w-24 xs:w-18 h-10 bg-transparent text-white placeholder:italic pl-6 placeholder:text-xs placeholder:tracking-widest rounded-md border border-slate-400 focus:outline-none" type="text" id="nama" placeholder="ex: rizka">
 
-                    <label class="text-white text-lg text-center mb-2 pt-6 tracking-wider" for="kodeAkses">Password</label>
-                    <input class=" xl:w-64 lg:w-54 md:w-44 sm:w-24 xs:w-18 font-mono tracking-widest h-8 bg-transparent text-white placeholder:italic pl-6 placeholder:text-xs placeholder:tracking-widest rounded-md border border-slate-400 focus:outline-none" type="password" id="kodeAkses" placeholder="ex: 8293838">
+                    <label class="text-white text-sm text-center mb-2 pt-6 tracking-wider" for="kodeAkses">Password</label>
+                    <input class=" xl:w-64 lg:w-54 md:w-44 sm:w-24 xs:w-18 h-10 bg-transparent text-white placeholder:italic pl-6 placeholder:text-xs placeholder:tracking-widest rounded-md border border-slate-400 focus:outline-none" type="password" id="kodeAkses" placeholder="ex: 8293838">
 
                     <button class="text-sm font-bold pt-6 font-serif text-green-600 hover:text-green-300 hover:scale-110" onclick="cekKodeAkses()">Masuk</button>
                 </div>
