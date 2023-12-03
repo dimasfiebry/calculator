@@ -1,4 +1,4 @@
-// Data nama dan kode akses yang benar
+
 const dataNamaKodeAkses = [
     { nama: "rizka", kodeAkses: "800978" },
     { nama: "adam", kodeAkses: "123456" },
@@ -11,6 +11,7 @@ const dataNamaKodeAkses = [
     { nama: "dina", kodeAkses: "135790" },
     { nama: "fajar", kodeAkses: "246801" }
 ];
+
 
 function cekKodeAkses() {
     var namaInput = document.getElementById('nama').value;
