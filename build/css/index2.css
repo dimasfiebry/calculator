@@ -1,3 +1,12 @@
-body {
+/* @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap'); */
+
+html,body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 100%;
+  margin: 0;
+  padding: 0;
+
+    scroll-behavior: smooth;
+    
+    
 }
