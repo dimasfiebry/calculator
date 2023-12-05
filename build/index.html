@@ -67,34 +67,34 @@
         </div>
         <div x-show="navOpen" x-data="{open: false}"
             class=" lg:hidden bottom-0 bg-white fixed w-full right-0 left-0 p-4">
-            <ul class="flex justify-center ">
+            <ul class="flex justify-center z-50">
                 <li class="flex flex-row justify-center gap-9 md:gap-28">
-                    <button class="flex  justify-center flex-col items-center gap-1 text-green-800">
+                    <a href="" class="flex  justify-center flex-col items-center gap-1 text-green-800">
                         <ion-icon name="home-outline" class="text-xl"></ion-icon>
                         <span class="text-sm font-bold tracking-wide">Home</span>
 
-                    </button>
-                    <button class="flex  justify-center  flex-col items-center gap-1">
+                    </a>
+                    <a href="" class="flex  justify-center  flex-col items-center gap-1">
                         <ion-icon name="fast-food-outline" class="text-xl opacity-50"></ion-icon>
                         <span class="text-sm font-normal tracking-wide opacity-50">Nutritions</span>
 
-                    </button>
-                    <button class="flex  justify-center  flex-col items-center gap-1">
+                    </a>
+                    <a href="" class="flex  justify-center  flex-col items-center gap-1">
                         <ion-icon name="accessibility-outline" class="text-xl opacity-50"></ion-icon>
                         <span class="text-sm font-normal tracking-wide opacity-50">Check Up</span>
 
-                    </button>
-                    <button class="flex  justify-center  flex-col items-center gap-1">
+                    </a>
+                    <a href="" class="flex  justify-center  flex-col items-center gap-1">
                         <ion-icon name="book-outline" class="text-xl opacity-50"></ion-icon>
                         <span class="text-sm font-normal tracking-wide opacity-50">Blogs</span>
 
-                    </button>
-                    <button @click="open = !open"
+                    </a>
+                    <a href="" @click="open = !open"
                         class="flex  justify-center  flex-col items-center gap-1 transition-all ease-in-out">
                         <ion-icon name="person-circle-outline" class="text-xl opacity-50"></ion-icon>
                         <span class="text-sm font-normal tracking-wide opacity-50">Login</span>
 
-                    </button>
+                    </a>
                 </li>
             </ul>
             <div x-show="open"
@@ -109,8 +109,8 @@
         </div>
     </nav>
 
-    <section>
-        <main class="h-screen w-screen bg-black opacity-40 bg-cover bg-no-repeat" style="background-image: url(img/bg.jpg);"></main>
+    <section class="bg-black">
+        <main class="h-screen w-screen  opacity-40 bg-cover bg-no-repeat" style="background-image: url(img/bg.jpg);"></main>
     </section>
     <script src="js/dataTest.js"></script>
     <script src="js/login.js"></script>
