@@ -1085,6 +1085,18 @@ video {
   background-color: rgb(185 28 28 / var(--tw-bg-opacity));
 }
 
+.bg-\[\#073000a5\] {
+  background-color: #073000a5;
+}
+
+.bg-\[\#\] {
+  background-color: #;
+}
+
+.bg-\[\#07300067\] {
+  background-color: #07300067;
+}
+
 .bg-cover {
   background-size: cover;
 }
