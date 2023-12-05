@@ -1,40 +1,248 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nutrients</title>
-    <link rel="stylesheet" href="css/index2.css">
+    <title>UAP</title>
+    <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="img/icons8-organic-food-48-2.png" type="image/x-icon">
-    <link rel="apple-touch-icon" sizes="180x180" href="img/icons8-organic-food-48-2.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="img/icons8-organic-food-48-2.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="img/icons8-organic-food-48-2.png">
+    <style>
+        /* Tambahkan gaya CSS sesuai kebutuhan Anda */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 10px;
+        }
 
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
 </head>
 
 <body>
-    <nav class="bg-gray-300 flex flex-row h-16 md:h-20 lg:h-20 w-screen fixed items-center">
-        <div class="h-full w-1/4 flex flex-row items-center pl-4 md:pl-10 lg:pl-16">
-            <img class="h-10 md:h-12 lg:h-12 opacity-80" src="img/logo.png" alt="">
-            <h2 class="font-semibold  text-green-800">Nutrients For You</h2>
-        </div>
-    </nav>
     <section>
-        <main class="h-screen w-screen bg-gray-200"></main>
+        <main>
+            <div class="meal-form-container">
+                <h1>Kalkulator Kebutuhan Gizi Harian</h1>
+                <form id="meal-form">
+                    <!-- Tabel untuk Sarapan -->
+                    <div class="meal">
+                        <h2>Sarapan</h2>
+                        <table id="ingredient-table-breakfast">
+                            <tr>
+                                <th>Nama Bahan</th>
+                                <th>Nama Zat Gizi</th>
+                                <th>Berat Bahan (gram)</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="text" id="namaBahanInput" placeholder="Masukkan nama bahan"
+                                        list="namaBahanOptions">
+                                    <datalist id="namaBahanOptions"></datalist>
+                                </td>
+                                <td>
+                                    <input type="text" id="namaZatInput" placeholder="Masukkan nama zat gizi"
+                                        list="namaZatOptions">
+                                    <datalist id="namaZatOptions"></datalist>
+                                </td>
+                                <td><input type="number" name="beratBahan[]" placeholder="Masukkan berat bahan"></td>
+                            </tr>
+                        </table>
+                        <button type="button" onclick="addIngredientRow('ingredient-table-breakfast')">Tambah
+                            Bahan</button>
+                        <button type="button" onclick="calculateSingleMeal('ingredient-table-breakfast')">Hitung Zat
+                            Gizi Sarapan</button>
+                    </div>
+
+                    <div class="meal">
+                        <h2> Selingan Pagi</h2>
+                        <table id="ingredient-table-snack-morning">
+                            <tr>
+                                <th>Nama Bahan</th>
+                                <th>Nama Zat Gizi</th>
+                                <th>Berat Bahan (gram)</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="text" id="namaBahanInput" placeholder="Masukkan nama bahan"
+                                        list="namaBahanOptions">
+                                    <datalist id="namaBahanOptions"></datalist>
+                                </td>
+                                <td>
+                                    <input type="text" id="namaZatInput" placeholder="Masukkan nama zat gizi"
+                                        list="namaZatOptions">
+                                    <datalist id="namaZatOptions"></datalist>
+                                </td>
+                                <td><input type="number" name="beratBahan[]" placeholder="Masukkan berat bahan"></td>
+                            </tr>
+                        </table>
+                        <button type="button" onclick="addIngredientRow('ingredient-table-snack-morning')">Tambah
+                            Bahan</button>
+                        <button type="button" onclick="calculateSingleMeal('ingredient-table-snack-morning')">Hitung Zat
+                            Gizi Selingan Pagi</button>
+
+                    </div>
+                    <div class="meal">
+                        <h2>Makan Siang</h2>
+                        <table id="ingredient-table-lunch">
+                            <tr>
+                                <th>Nama Bahan</th>
+                                <th>Nama Zat Gizi</th>
+                                <th>Berat Bahan (gram)</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="text" id="namaBahanInput" placeholder="Masukkan nama bahan"
+                                        list="namaBahanOptions">
+                                    <datalist id="namaBahanOptions"></datalist>
+                                </td>
+                                <td>
+                                    <input type="text" id="namaZatInput" placeholder="Masukkan nama zat gizi"
+                                        list="namaZatOptions">
+                                    <datalist id="namaZatOptions"></datalist>
+                                </td>
+                                <td><input type="number" name="beratBahan[]" placeholder="Masukkan berat bahan"></td>
+                            </tr>
+                        </table>
+                        <button type="button" onclick="addIngredientRow('ingredient-table-lunch')">Tambah
+                            Bahan</button>
+                        <button type="button" onclick="calculateSingleMeal('ingredient-table-lunch')">Hitung Zat Gizi
+                            Makan Siang</button>
+                    </div>
+                    <div class="meal">
+                        <h2>Selingan Sore</h2>
+                        <table id="ingredient-table-snack-afternoon">
+                            <tr>
+                                <th>Nama Bahan</th>
+                                <th>Nama Zat Gizi</th>
+                                <th>Berat Bahan (gram)</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="text" id="namaBahanInput" placeholder="Masukkan nama bahan"
+                                        list="namaBahanOptions">
+                                    <datalist id="namaBahanOptions"></datalist>
+                                </td>
+                                <td>
+                                    <input type="text" id="namaZatInput" placeholder="Masukkan nama zat gizi"
+                                        list="namaZatOptions">
+                                    <datalist id="namaZatOptions"></datalist>
+                                </td>
+                                <td><input type="number" name="beratBahan[]" placeholder="Masukkan berat bahan"></td>
+                            </tr>
+                        </table>
+                        <button type="button" onclick="addIngredientRow('ingredient-table-snack-afternoon')">Tambah
+                            Bahan</button>
+                        <button type="button" onclick="calculateSingleMeal('ingredient-table-snack-afternoon')">Hitung
+                            Zat Gizi Selingan Sore</button>
+
+                    </div>
+                    <div class="meal">
+                        <h2>Makan Malam</h2>
+                        <table id="ingredient-table-dinner">
+                            <tr>
+                                <th>Nama Bahan</th>
+                                <th>Nama Zat Gizi</th>
+                                <th>Berat Bahan (gram)</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="text" id="namaBahanInput" placeholder="Masukkan nama bahan"
+                                        list="namaBahanOptions">
+                                    <datalist id="namaBahanOptions"></datalist>
+                                </td>
+                                <td>
+                                    <input type="text" id="namaZatInput" placeholder="Masukkan nama zat gizi"
+                                        list="namaZatOptions">
+                                    <datalist id="namaZatOptions"></datalist>
+                                </td>
+                                <td><input type="number" name="beratBahan[]" placeholder="Masukkan berat bahan"></td>
+                            </tr>
+                        </table>
+                        <button type="button" onclick="addIngredientRow('ingredient-table-dinner')">Tambah
+                            Bahan</button>
+                        <button type="button" onclick="calculateSingleMeal('ingredient-table-dinner')">Hitung Zat Gizi
+                            Makan Malam</button>
+
+                    </div>
+                    <div class="meal">
+                        <h2>Selingan Malam</h2>
+                        <table id="ingredient-table-snack-night">
+                            <tr>
+                                <th>Nama Bahan</th>
+                                <th>Nama Zat Gizi</th>
+                                <th>Berat Bahan (gram)</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="text" id="namaBahanInput" placeholder="Masukkan nama bahan"
+                                        list="namaBahanOptions">
+                                    <datalist id="namaBahanOptions"></datalist>
+                                </td>
+                                <td>
+                                    <input type="text" id="namaZatInput" placeholder="Masukkan nama zat gizi"
+                                        list="namaZatOptions">
+                                    <datalist id="namaZatOptions"></datalist>
+                                </td>
+                                <td><input type="number" name="beratBahan[]" placeholder="Masukkan berat bahan"></td>
+                            </tr>
+                        </table>
+                        <button type="button" onclick="addIngredientRow('ingredient-table-snack-night')">Tambah
+                            Bahan</button>
+                        <button type="button" onclick="calculateSingleMeal('ingredient-table-snack-night')">Hitung Zat
+                            Gizi Selingan Malam</button>
+
+                    </div>
+
+                    <!-- all -->
+
+                    <div class="meal">
+                        <h2>Hitung Total Harian</h2>
+                        <table id="ingredient-table-all">
+                            <tr>
+                                <th>Nama Zat Gizi</th>
+                                <th>Total Kebutuhan Zat Gizi</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="text" id="namaZatInput" placeholder="Masukkan nama zat gizi"
+                                        list="namaZatOptions">
+                                    <datalist id="namaZatOptions"></datalist>
+                                </td>
+                                <td><input type="number" name="beratBahan[]"
+                                        placeholder="Masukkan Total Kebutuhan Zat Gizi"></td>
+                            </tr>
+                        </table>
+                        <button type="button" onclick="addDailyNutritionRow()">Tambah Bahan</button>
+                        <button type="button" onclick="calculateDailyNutritionStatus()">Hitung Zat Gizi Harian</button>
+                    </div>
+
+                </form>
+            </div>
+            
+
+            <script src="js/script.js"></script>
+            <script>
+                lucide.createIcons();
+
+
+            </script>
+        </main>
     </section>
-            <script src="js/dataTest.js"></script>
-            <script src="js/login.js"></script>
-
-    
+    <footer class="w-screen flex flex-row justify-center items-center">
+        <p class="h-12 mt-4">Pengembang Web @fiebryhoga</p>
+    </footer>
 </body>
-
-
-<!-- <script src="https://unpkg.com/lucide@latest"></script> -->
-<!-- <script src="js/script.js"></script> -->
-<script>
-    lucide.createIcons();
-</script>
 
 </html>
