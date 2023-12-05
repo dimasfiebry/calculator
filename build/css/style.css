@@ -1506,6 +1506,10 @@ video {
     gap: 7rem;
   }
 
+  .md\:gap-12 {
+    gap: 3rem;
+  }
+
   .md\:pl-10 {
     padding-left: 2.5rem;
   }
