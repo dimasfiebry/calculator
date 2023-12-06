@@ -20,7 +20,7 @@
 <body>
     <nav x-data="{open : false}" class=" w-screen h-12 fixed">
         <div class=" py-2 px-8 md:px-0 flex flex-row justify-between items-center hover:cursor-pointer sm:pr-10">
-            <div class="flex flex-row justify-between items-center order-1 sm:order-2 sm:pl-16 md:px-24">
+            <div class="flex flex-row justify-between items-center order-1 sm:order-2 sm:pl-16 sm:ml-12 md:px-7">
                 <img class="h-8 opacity-80" src="img/logo.png" alt="logo">
                 <p class="font-semibold text-xs text-green-800 tracking-wider">Nutrition <span
                         class="text-yellow-700">Calculate</span></p>
@@ -252,16 +252,16 @@
     </nav>
     <section class="">
         <main class="h-screen w-screen pt-20 md:pt-12 md:mt-1 md:pl-80">
-            <div class="px-8 flex flex-col items-center space-y-6">
+            <div class="px-8 flex flex-col items-center space-y-6 sm:px-16">
                 <img class="w-64 pb-8" src="img/home.png" alt="">
                 <h1 class="font-extrabold text-3xl tracking-wider text-green-700">
                     Nutrition Calculator
                 </h1>
-                <p class="items-center text-justify tracking-wide leading-8 font-medium text-sm">Nutrition Calculator adalah <span class="text-green-800">web perhitungan gizi</span> yang komprehensif dengan fitur lengkap dan data
+                <p class="items-center text-justify tracking-wide leading-8 font-medium text-sm sm:px-20 md:px-44 md:text-center">Nutrition Calculator adalah <span class="text-green-800">web perhitungan gizi</span> yang komprehensif dengan fitur lengkap dan data
                     terkini sesuai dengan standar <span class="text-green-800">TKPI 2020</span>, membantu Anda dengan cepat dan akurat merumuskan asupan
                     nutrisi harian untuk gaya hidup sehat.</p>
             </div>
-            <div class=" flex flex-col pt-4 justify center items-center">
+            <div class=" flex flex-col pt-4 justify center items-center md:pt-16">
                 <P class="w-20 h-20 py-7 border-2 border-green-800 text-center rounded-full tracking-wider text-sm hover:bg-gray-100 cursor-pointer">Start</P>
             </div>
             <!-- <div class="w-1/2 bg-black">
