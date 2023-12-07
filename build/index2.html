@@ -1,248 +1,321 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UAP</title>
-    <link rel="stylesheet" href="css/index.css">
+    <title>Nutrition Calculate</title>
+    <link rel="stylesheet" href="css/index2.css">
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        /* Tambahkan gaya CSS sesuai kebutuhan Anda */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 10px;
-        }
+    <link rel="icon" href="img/icons8-organic-food-48-2.png" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/icons8-organic-food-48-2.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/icons8-organic-food-48-2.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/icons8-organic-food-48-2.png">
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
 
-        table,
-        th,
-        td {
-            border: 1px solid black;
-        }
 
-        th,
-        td {
-            padding: 10px;
-            text-align: left;
-        }
-    </style>
+
 </head>
 
-<body>
-    <section>
-        <main>
-            <div class="meal-form-container">
-                <h1>Kalkulator Kebutuhan Gizi Harian</h1>
-                <form id="meal-form">
-                    <!-- Tabel untuk Sarapan -->
-                    <div class="meal">
-                        <h2>Sarapan</h2>
-                        <table id="ingredient-table-breakfast">
-                            <tr>
-                                <th>Nama Bahan</th>
-                                <th>Nama Zat Gizi</th>
-                                <th>Berat Bahan (gram)</th>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="text" id="namaBahanInput" placeholder="Masukkan nama bahan"
-                                        list="namaBahanOptions">
-                                    <datalist id="namaBahanOptions"></datalist>
-                                </td>
-                                <td>
-                                    <input type="text" id="namaZatInput" placeholder="Masukkan nama zat gizi"
-                                        list="namaZatOptions">
-                                    <datalist id="namaZatOptions"></datalist>
-                                </td>
-                                <td><input type="number" name="beratBahan[]" placeholder="Masukkan berat bahan"></td>
-                            </tr>
-                        </table>
-                        <button type="button" onclick="addIngredientRow('ingredient-table-breakfast')">Tambah
-                            Bahan</button>
-                        <button type="button" onclick="calculateSingleMeal('ingredient-table-breakfast')">Hitung Zat
-                            Gizi Sarapan</button>
-                    </div>
-
-                    <div class="meal">
-                        <h2> Selingan Pagi</h2>
-                        <table id="ingredient-table-snack-morning">
-                            <tr>
-                                <th>Nama Bahan</th>
-                                <th>Nama Zat Gizi</th>
-                                <th>Berat Bahan (gram)</th>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="text" id="namaBahanInput" placeholder="Masukkan nama bahan"
-                                        list="namaBahanOptions">
-                                    <datalist id="namaBahanOptions"></datalist>
-                                </td>
-                                <td>
-                                    <input type="text" id="namaZatInput" placeholder="Masukkan nama zat gizi"
-                                        list="namaZatOptions">
-                                    <datalist id="namaZatOptions"></datalist>
-                                </td>
-                                <td><input type="number" name="beratBahan[]" placeholder="Masukkan berat bahan"></td>
-                            </tr>
-                        </table>
-                        <button type="button" onclick="addIngredientRow('ingredient-table-snack-morning')">Tambah
-                            Bahan</button>
-                        <button type="button" onclick="calculateSingleMeal('ingredient-table-snack-morning')">Hitung Zat
-                            Gizi Selingan Pagi</button>
-
-                    </div>
-                    <div class="meal">
-                        <h2>Makan Siang</h2>
-                        <table id="ingredient-table-lunch">
-                            <tr>
-                                <th>Nama Bahan</th>
-                                <th>Nama Zat Gizi</th>
-                                <th>Berat Bahan (gram)</th>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="text" id="namaBahanInput" placeholder="Masukkan nama bahan"
-                                        list="namaBahanOptions">
-                                    <datalist id="namaBahanOptions"></datalist>
-                                </td>
-                                <td>
-                                    <input type="text" id="namaZatInput" placeholder="Masukkan nama zat gizi"
-                                        list="namaZatOptions">
-                                    <datalist id="namaZatOptions"></datalist>
-                                </td>
-                                <td><input type="number" name="beratBahan[]" placeholder="Masukkan berat bahan"></td>
-                            </tr>
-                        </table>
-                        <button type="button" onclick="addIngredientRow('ingredient-table-lunch')">Tambah
-                            Bahan</button>
-                        <button type="button" onclick="calculateSingleMeal('ingredient-table-lunch')">Hitung Zat Gizi
-                            Makan Siang</button>
-                    </div>
-                    <div class="meal">
-                        <h2>Selingan Sore</h2>
-                        <table id="ingredient-table-snack-afternoon">
-                            <tr>
-                                <th>Nama Bahan</th>
-                                <th>Nama Zat Gizi</th>
-                                <th>Berat Bahan (gram)</th>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="text" id="namaBahanInput" placeholder="Masukkan nama bahan"
-                                        list="namaBahanOptions">
-                                    <datalist id="namaBahanOptions"></datalist>
-                                </td>
-                                <td>
-                                    <input type="text" id="namaZatInput" placeholder="Masukkan nama zat gizi"
-                                        list="namaZatOptions">
-                                    <datalist id="namaZatOptions"></datalist>
-                                </td>
-                                <td><input type="number" name="beratBahan[]" placeholder="Masukkan berat bahan"></td>
-                            </tr>
-                        </table>
-                        <button type="button" onclick="addIngredientRow('ingredient-table-snack-afternoon')">Tambah
-                            Bahan</button>
-                        <button type="button" onclick="calculateSingleMeal('ingredient-table-snack-afternoon')">Hitung
-                            Zat Gizi Selingan Sore</button>
-
-                    </div>
-                    <div class="meal">
-                        <h2>Makan Malam</h2>
-                        <table id="ingredient-table-dinner">
-                            <tr>
-                                <th>Nama Bahan</th>
-                                <th>Nama Zat Gizi</th>
-                                <th>Berat Bahan (gram)</th>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="text" id="namaBahanInput" placeholder="Masukkan nama bahan"
-                                        list="namaBahanOptions">
-                                    <datalist id="namaBahanOptions"></datalist>
-                                </td>
-                                <td>
-                                    <input type="text" id="namaZatInput" placeholder="Masukkan nama zat gizi"
-                                        list="namaZatOptions">
-                                    <datalist id="namaZatOptions"></datalist>
-                                </td>
-                                <td><input type="number" name="beratBahan[]" placeholder="Masukkan berat bahan"></td>
-                            </tr>
-                        </table>
-                        <button type="button" onclick="addIngredientRow('ingredient-table-dinner')">Tambah
-                            Bahan</button>
-                        <button type="button" onclick="calculateSingleMeal('ingredient-table-dinner')">Hitung Zat Gizi
-                            Makan Malam</button>
-
-                    </div>
-                    <div class="meal">
-                        <h2>Selingan Malam</h2>
-                        <table id="ingredient-table-snack-night">
-                            <tr>
-                                <th>Nama Bahan</th>
-                                <th>Nama Zat Gizi</th>
-                                <th>Berat Bahan (gram)</th>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="text" id="namaBahanInput" placeholder="Masukkan nama bahan"
-                                        list="namaBahanOptions">
-                                    <datalist id="namaBahanOptions"></datalist>
-                                </td>
-                                <td>
-                                    <input type="text" id="namaZatInput" placeholder="Masukkan nama zat gizi"
-                                        list="namaZatOptions">
-                                    <datalist id="namaZatOptions"></datalist>
-                                </td>
-                                <td><input type="number" name="beratBahan[]" placeholder="Masukkan berat bahan"></td>
-                            </tr>
-                        </table>
-                        <button type="button" onclick="addIngredientRow('ingredient-table-snack-night')">Tambah
-                            Bahan</button>
-                        <button type="button" onclick="calculateSingleMeal('ingredient-table-snack-night')">Hitung Zat
-                            Gizi Selingan Malam</button>
-
-                    </div>
-
-                    <!-- all -->
-
-                    <div class="meal">
-                        <h2>Hitung Total Harian</h2>
-                        <table id="ingredient-table-all">
-                            <tr>
-                                <th>Nama Zat Gizi</th>
-                                <th>Total Kebutuhan Zat Gizi</th>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="text" id="namaZatInput" placeholder="Masukkan nama zat gizi"
-                                        list="namaZatOptions">
-                                    <datalist id="namaZatOptions"></datalist>
-                                </td>
-                                <td><input type="number" name="beratBahan[]"
-                                        placeholder="Masukkan Total Kebutuhan Zat Gizi"></td>
-                            </tr>
-                        </table>
-                        <button type="button" onclick="addDailyNutritionRow()">Tambah Bahan</button>
-                        <button type="button" onclick="calculateDailyNutritionStatus()">Hitung Zat Gizi Harian</button>
-                    </div>
-
-                </form>
+<body x-data="{navOpen : false}">
+    <nav x-data="{open : false}" class=" w-screen h-12 top-0 bottom-0 fixed">
+        <div
+            class=" py-2 px-8 md:px-0 flex flex-row justify-between items-center hover:cursor-pointer sm:pr-10 md:pr-0 bg-white">
+            <div
+                class="flex flex-row justify-between items-center order-1 sm:order-2 sm:pl-16 sm:ml-12 md:px-0 md:ml-7">
+                <img class="h-8 opacity-80" src="img/logo.png" alt="logo">
+                <p class="font-semibold text-xs text-green-800 tracking-wider">Nutrition <span
+                        class="text-yellow-700">Calculate</span></p>
             </div>
-            
+            <!-- <div class="order-2 hidden sm:block sm:order-3 md:px-8">
+                <a href="login.html" class="px-4 py-4 tracking-wider text-xs">
+                    Daftar
+                </a>
+                <a href="login.html"
+                    class="bg-green-700 rounded-full w-30 px-6 py-2 text-white tracking-wider text-xs hover:bg-white hover:border-2 hover:border-green-700 hover:text-green-600 border border-green-600">
+                    Log In
+                </a>
+            </div> -->
 
-            <script src="js/script.js"></script>
-            <script>
-                lucide.createIcons();
+            <ion-icon @click="open = !open"
+                class=" h-6 order-3 sm:order-1 md:hidden cursor-pointer  hover:rotate-90 hover:transition-all ease-in-out duration-300 hover:pr-1 hover:pb-1 hover:scale-90 text-4xl hover:text-green-800"
+                name="ellipsis-horizontal-outline">
+
+        </div>
+        <!-- nav menu md, lg -->
+        <div class=" bg-white hidden md:block pl-8 md:w-80 transition-all ease-in-out fixed inset-x-0 top-12">
+            <ul class="">
+                <li class=" flex flex-col items-center">
+                    <a href="index.html"
+                        class="w-full items-center flex py-3 text-xs tracking-wider text-center text-yellow-700">
+                        Home
+                    </a>
+                    <div href=""
+                        class=" gap-3 flex-col w-full text-green-900 mb-10 mt-3 justify-center flex text-xs tracking-wider font-medium">
+                        <p class=" pb-1 text-slate-400 text-xs">Kebutuhan Energi</p>
+                        <a href="#" class="flex flex-row hover:text-yellow-700 items-center text-xs space-x-2 ">
+                            <ion-icon name="battery-dead-outline"></ion-icon>
+                            <p>Kebutuhan Energi Katch - McArdle</p>
+                        </a>
+                        <a href="#" class="flex flex-row hover:text-yellow-700 items-center space-x-2 ">
+                            <ion-icon name="battery-half-outline"></ion-icon>
+                            <p>Kebutuhan Energi Katch - Mifflin St Jeor</p>
+                        </a>
+                        <a href="#" class="flex flex-row hover:text-yellow-700 items-center space-x-2 ">
+                            <ion-icon name="battery-full-outline"></ion-icon>
+                            <p>Kebutuhan Energi Katch - Harris Bennedict</p>
+                        </a>
+                        <a href="#" class="flex flex-row hover:text-yellow-700 items-center space-x-2 ">
+                            <ion-icon name="water-outline"></ion-icon>
+                            <p>Kebutuhan Air</p>
+                        </a>
 
 
-            </script>
+
+                    </div>
+                    <div href="#"
+                        class=" gap-3 flex-col w-full text-green-900 mb-10 justify-center flex text-xs tracking-wider font-medium">
+
+                        <p class=" pb-1 text-slate-400 text-xs">Zat Gizi</p>
+                        <a href="#" class="flex flex-row hover:text-yellow-700 items-center space-x-2 ">
+                            <ion-icon name="nutrition-outline"></ion-icon>
+                            <p>Hitung Zat Gizi Bahan</p>
+                        </a>
+                        <a href="#" class="flex flex-row hover:text-yellow-700 items-center space-x-2 ">
+                            <ion-icon name="restaurant-outline"></ion-icon>
+                            <p>Hitung Zat Per Waktu Makan</p>
+                        </a>
+                        <a href="#" class="flex flex-row hover:text-yellow-700 items-center space-x-2 ">
+                            <ion-icon name="sunny-outline"></ion-icon>
+                            <p>Hitung Zat Gizi Harian</p>
+                        </a>
+                    </div>
+                    <div href="#"
+                        class=" gap-3 flex-col w-full text-green-900 mb-10 justify-center flex text-xs tracking-wider font-medium">
+
+                        <p class=" pb-1 text-slate-400 text-xs">Check Up Tubuh</p>
+                        <a href="#" class="flex flex-row hover:text-yellow-700 items-center space-x-2 ">
+                            <ion-icon name="body-outline"></ion-icon>
+                            <p>Indeks Masa Tubuh (IMT / BMT)</p>
+                        </a>
+                        <a href="#" class="flex flex-row hover:text-yellow-700 items-center space-x-2 ">
+                            <ion-icon name="man-outline"></ion-icon>
+                            <p>Berat Badan Ideal</p>
+                        </a>
+                        <a href="#" class="flex flex-row hover:text-yellow-700 items-center space-x-2 ">
+                            <ion-icon name="scale-outline"></ion-icon>
+                            <p>Estimasi Turun Berat Badan</p>
+                        </a>
+                    </div>
+                    <div href="#"
+                        class=" gap-3 flex-col w-full text-green-900 mb-10 justify-center flex text-xs tracking-wider font-medium">
+
+                        <p class=" pb-1 text-slate-400 text-xs">More</p>
+                        <a href="#" class="flex flex-row hover:text-yellow-700 items-center space-x-2 ">
+                            <ion-icon name="people-outline"></ion-icon>
+                            <p>Tentang Kami</p>
+                        </a>
+                        <a href="#" class="flex flex-row hover:text-yellow-700 items-center space-x-2 ">
+                            <ion-icon name="newspaper-outline"></ion-icon>
+                            <p>Kebijakan dan Privasi</p>
+                        </a>
+                        <a href="#" class="flex flex-row hover:text-yellow-700 items-center space-x-2 ">
+                            <ion-icon name="mail-open-outline"></ion-icon>
+                            <p>Saran dan Masukan</p>
+                        </a>
+
+                    </div>
+                    <!-- <div class="mt-10 sm:hidden">
+                        <a href="login.html" class="px-10 py-4 tracking-wider text-xs">
+                            Daftar
+                        </a>
+                        <a href="login.html"
+                            class="bg-green-700 rounded-full w-30 px-10 py-3 text-white tracking-wider text-xs hover:bg-white hover:border-2 hover:border-green-700 hover:text-green-600 border border-green-600">
+                            Log In
+                        </a>
+                    </div> -->
+                </li>
+            </ul>
+        </div>
+        <!-- nav menu default, sm-->
+        <div x-show="open" x-transition:enter="transition ease-out duration-700"
+            x-transition:enter-start="opacity-0 transform ease-out -translate-y-8"
+            x-transition:enter-end="opacity-100 transform ease-out translate-y-7"
+            x-transition:leave="transition ease-in duration-700"
+            x-transition:leave-start="opacity-100 transform translate-y-7"
+            x-transition:leave-end="opacity-0 transform -translate-y-8"
+            class=" bg-white transition-all ease-in-out fixed inset-x-0 top-12 md:hidden">
+            <ul class="">
+                <li class=" flex flex-col justify-center items-center">
+                    <a href="#"
+                        class="w-full justify-center items-center flex pl-3 mb-4 text-sm tracking-wider text-center text-yellow-700">
+                        Home
+                    </a>
+                    <div href=""
+                        class=" gap-3 flex-col w-full text-green-900 mb-6 justify-center flex text-xs tracking-wider text-center font-medium">
+                        <p class=" pb-1 text-slate-400 text-xs">Kebutuhan Energi</p>
+                        <a href="#" class="flex flex-row hover:text-yellow-700 pl-3 items-center space-x-2 ">
+                            <ion-icon name="battery-dead-outline"></ion-icon>
+                            <p>Kebutuhan Energi Katch - McArdle</p>
+                        </a>
+                        <a href="#" class="flex flex-row hover:text-yellow-700 pl-3 items-center space-x-2 ">
+                            <ion-icon name="battery-half-outline"></ion-icon>
+                            <p>Kebutuhan Energi Katch - Mifflin St Jeor</p>
+                        </a>
+                        <a href="#" class="flex flex-row hover:text-yellow-700 pl-3 items-center space-x-2 ">
+                            <ion-icon name="battery-full-outline"></ion-icon>
+                            <p>Kebutuhan Energi Katch - Harris Bennedict</p>
+                        </a>
+                        <a href="#" class="flex flex-row hover:text-yellow-700 pl-3 items-center space-x-2 ">
+                            <ion-icon name="water-outline"></ion-icon>
+                            <p>Kebutuhan Air</p>
+                        </a>
+
+
+
+                    </div>
+                    <div href="#"
+                        class=" gap-3 flex-col w-full text-green-900 mb-6 justify-center flex text-xs tracking-wider text-center font-medium">
+
+                        <p class=" pb-1 text-slate-400 text-xs">Zat Gizi</p>
+                        <a href="#" class="flex flex-row hover:text-yellow-700 pl-3 items-center space-x-2 ">
+                            <ion-icon name="nutrition-outline"></ion-icon>
+                            <p>Hitung Zat Gizi Bahan</p>
+                        </a>
+                        <a href="#" class="flex flex-row hover:text-yellow-700 pl-3 items-center space-x-2 ">
+                            <ion-icon name="restaurant-outline"></ion-icon>
+                            <p>Hitung Zat Per Waktu Makan</p>
+                        </a>
+                        <a href="#" class="flex flex-row hover:text-yellow-700 pl-3 items-center space-x-2 ">
+                            <ion-icon name="sunny-outline"></ion-icon>
+                            <p>Hitung Zat Gizi Harian</p>
+                        </a>
+                    </div>
+                    <div href="#"
+                        class=" gap-3 flex-col w-full text-green-900 mb-6 justify-center flex text-xs tracking-wider text-center font-medium">
+
+                        <p class=" pb-1 text-slate-400 text-xs">Check Up Tubuh</p>
+                        <a href="#" class="flex flex-row hover:text-yellow-700 pl-3 items-center space-x-2 ">
+                            <ion-icon name="body-outline"></ion-icon>
+                            <p>Indeks Masa Tubuh (IMT / BMT)</p>
+                        </a>
+                        <a href="#" class="flex flex-row hover:text-yellow-700 pl-3 items-center space-x-2 ">
+                            <ion-icon name="man-outline"></ion-icon>
+                            <p>Berat Badan Ideal</p>
+                        </a>
+                        <a href="#" class="flex flex-row hover:text-yellow-700 pl-3 items-center space-x-2 ">
+                            <ion-icon name="scale-outline"></ion-icon>
+                            <p>Estimasi Turun Berat Badan</p>
+                        </a>
+                    </div>
+                    <div href="#"
+                        class=" gap-3 flex-col w-full text-green-900 mb-6 justify-center flex text-xs tracking-wider text-center font-medium">
+
+                        <p class=" pb-1 text-slate-400 text-xs">More</p>
+                        <a href="#" class="flex flex-row hover:text-yellow-700 pl-3 items-center space-x-2 ">
+                            <ion-icon name="people-outline"></ion-icon>
+                            <p>Tentang Kami</p>
+                        </a>
+                        <a href="#" class="flex flex-row hover:text-yellow-700 pl-3 items-center space-x-2 ">
+                            <ion-icon name="newspaper-outline"></ion-icon>
+                            <p>Kebijakan dan Privasi</p>
+                        </a>
+                        <a href="#" class="flex flex-row hover:text-yellow-700 pl-3 items-center space-x-2 ">
+                            <ion-icon name="mail-open-outline"></ion-icon>
+                            <p>Saran dan Masukan</p>
+                        </a>
+
+                    </div>
+                    <!-- <div class="py-4 sm:hidden">
+                        <a href="login.html" class="px-10 py-4 tracking-wider text-xs">
+                            Daftar
+                        </a>
+                        <a href="login.html"
+                            class="bg-green-700 rounded-full w-30 px-10 py-3 text-white tracking-wider text-xs hover:bg-white hover:border-2 hover:border-green-700 hover:text-green-600 border border-green-600">
+                            Log In
+                        </a>
+                    </div> -->
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <section " class=" bg-white">
+        <main class=" h-screen w-screen pt-20 md:pt-12 md:mt-1 md:pl-80">
+            <div class="px-10 flex flex-col items-center space-y-6 sm:px-16">
+                <img class="w-64 pb-8" src="img/home.png" alt="">
+                <h1 class="font-extrabold text-2xl tracking-wider text-green-800">
+                    Nutrition Calculate
+                </h1>
+                <p
+                    class="items-center text-justify tracking-wide leading-8 font-medium text-sm sm:px-20 md:px-44 md:text-center">
+                    Nutrition Calculator adalah <span class="text-green-800"><b>web perhitungan gizi</b></span> yang
+                    komprehensif dengan fitur lengkap dan data
+                    terkini sesuai dengan standar <span class="text-green-800"><b>TKPI 2020</b></span>, membantu Anda
+                    dengan cepat dan akurat merumuskan asupan
+                    nutrisi harian untuk gaya hidup sehat.</p>
+            </div>
+            <div class=" flex flex-col pt-1 justify center items-center md:pt-16 mb-6">
+                <a @click.stop="navOpen = !navOpen; document.getElementById('nextSection').scrollIntoView({ behavior: 'smooth' });"
+                    class="w-20 h-20 py-7 border-2 border-green-800 text-center rounded-full tracking-wider text-sm hover:bg-gray-100 cursor-pointer">Start</a>
+            </div>
+            <!-- <div class="w-1/2 bg-black">
+                    halo
+                </div> -->
         </main>
     </section>
-    <footer class="w-screen flex flex-row justify-center items-center">
-        <p class="h-12 mt-4">Pengembang Web @fiebryhoga</p>
-    </footer>
+    <section x-show="navOpen" x-transition:enter="transition ease-out duration-700"
+        x-transition:enter-start="opacity-0 transform ease-out -translate-y-8"
+        x-transition:enter-end="opacity-100 transform ease-out translate-y-7" id="nextSection" class="bg-white">
+        <main class="h-[200vh] w-screen py-12 md:pt-12 md:pl-80">
+            <div class="px-10 flex flex-col justify-center items-center space-y-8">
+                <h2 class=" font-extrabold text-xl text-center text-green-800">Menawarkan Keunggulan Fitur</h2>
+                <p class="text-justify tracking-wider leading-8 text-sm ">Nutrition Calculator unggul dengan fitur
+                    perhitungan kebutuhan energi dan asupan zat gizi harian, didukung oleh data terkini TKPI 2020 untuk
+                    perencanaan makanan yang optimal</p>
+            </div>
+            <div class="flex flex-col items-center py-16">
+                <div
+                    class="h-80 w-60 rounded-2xl shadow-lg shadow-gray-300 hover:scale-110 transition-all ease-in-out duration-500 hover:shadow-2xl hover:shadow-green-800">
+                    <div class="h-3/6 rounded-2xl">
+                        <img class="h-full w-full rounded-t-2xl" src="img/bg.jpg" alt="">
+                    </div>
+                    <h3 class="text-center font-bold text-sm py-4 text-green-800">Cek Kebutuhan Energi Harian</h3>
+                    <p class="px-4 text-justify text-xs">Hitung energi dan zat gizi untuk perencanaan makan sehat dengan
+                        cepat</p>
+                    <p
+                        class="w-24 ml-2 mt-4 text-green-800 flex justify-center items-center hover:text-white h-8 hover:bg-green-800 text-xs">
+                        Coba Sekarang</p>
+                </div>
+            </div>
+        </main>
+
+    </section>
+    <script src="js/dataTest.js"></script>
+    <script src="js/login.js"></script>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+
 </body>
+
+
+<!-- <script src="https://unpkg.com/lucide@latest"></script> -->
+<!-- <script src="js/script.js"></script> -->
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<script>
+    lucide.createIcons();
+</script>
+
+<script>
+    const startButton = document.querySelector('.start-button');
+    const nextSection = document.getElementById('nextSection');
+
+    startButton.addEventListener('click', () => {
+        navOpen = !navOpen;
+        nextSection.scrollIntoView({ behavior: 'smooth' });
+    });
+</script>
 
 </html>

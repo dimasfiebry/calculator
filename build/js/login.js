@@ -24,7 +24,7 @@ function cekKodeAkses() {
 
     if (userValid) {
         // Jika benar, lanjut ke halaman index.html
-        window.location.href = "login.html";
+        window.location.href = "index2.html";
     } else {
         // Jika salah, tampilkan pesan error
         tampilkanPesanError("Nama atau kode akses tidak tersedia.");

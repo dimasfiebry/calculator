@@ -1,137 +1,248 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nutrients</title>
-    <link rel="stylesheet" href="css/index2.css">
+    <title>UAP</title>
+    <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="img/icons8-organic-food-48-2.png" type="image/x-icon">
-    <link rel="apple-touch-icon" sizes="180x180" href="img/icons8-organic-food-48-2.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="img/icons8-organic-food-48-2.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="img/icons8-organic-food-48-2.png">
-    <script src="//unpkg.com/alpinejs" defer></script>
+    <style>
+        /* Tambahkan gaya CSS sesuai kebutuhan Anda */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 10px;
+        }
 
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
 
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
 </head>
 
 <body>
-    <!-- <img class="object-cover h-screen w-screen opacity-40" src="img/bg.jpg" alt=""> -->
-    <nav x-data="{navOpen : true}" class="py-5 px-10 lg:px-20 lg:py-2">
-        <div class="container mx-auto flex flex-row justify-between items-center">
-            <div class="flex order-1 sm:order-2 items-center gap-2 md:ml-40 sm:ml-40 lg:ml-0">
-                <img class="h-10 md:h-12 lg:h-12 opacity-80  " src="img/logo.png" alt="">
-                <p class="text-sm font-semibold text-green-800 sm:hidden md:hidden lg:block">Nutrients For You</p>
+    <section>
+        <main>
+            <div class="meal-form-container">
+                <h1>Kalkulator Kebutuhan Gizi Harian</h1>
+                <form id="meal-form">
+                    <!-- Tabel untuk Sarapan -->
+                    <div class="meal">
+                        <h2>Sarapan</h2>
+                        <table id="ingredient-table-breakfast">
+                            <tr>
+                                <th>Nama Bahan</th>
+                                <th>Nama Zat Gizi</th>
+                                <th>Berat Bahan (gram)</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="text" id="namaBahanInput" placeholder="Masukkan nama bahan"
+                                        list="namaBahanOptions">
+                                    <datalist id="namaBahanOptions"></datalist>
+                                </td>
+                                <td>
+                                    <input type="text" id="namaZatInput" placeholder="Masukkan nama zat gizi"
+                                        list="namaZatOptions">
+                                    <datalist id="namaZatOptions"></datalist>
+                                </td>
+                                <td><input type="number" name="beratBahan[]" placeholder="Masukkan berat bahan"></td>
+                            </tr>
+                        </table>
+                        <button type="button" onclick="addIngredientRow('ingredient-table-breakfast')">Tambah
+                            Bahan</button>
+                        <button type="button" onclick="calculateSingleMeal('ingredient-table-breakfast')">Hitung Zat
+                            Gizi Sarapan</button>
+                    </div>
+
+                    <div class="meal">
+                        <h2> Selingan Pagi</h2>
+                        <table id="ingredient-table-snack-morning">
+                            <tr>
+                                <th>Nama Bahan</th>
+                                <th>Nama Zat Gizi</th>
+                                <th>Berat Bahan (gram)</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="text" id="namaBahanInput" placeholder="Masukkan nama bahan"
+                                        list="namaBahanOptions">
+                                    <datalist id="namaBahanOptions"></datalist>
+                                </td>
+                                <td>
+                                    <input type="text" id="namaZatInput" placeholder="Masukkan nama zat gizi"
+                                        list="namaZatOptions">
+                                    <datalist id="namaZatOptions"></datalist>
+                                </td>
+                                <td><input type="number" name="beratBahan[]" placeholder="Masukkan berat bahan"></td>
+                            </tr>
+                        </table>
+                        <button type="button" onclick="addIngredientRow('ingredient-table-snack-morning')">Tambah
+                            Bahan</button>
+                        <button type="button" onclick="calculateSingleMeal('ingredient-table-snack-morning')">Hitung Zat
+                            Gizi Selingan Pagi</button>
+
+                    </div>
+                    <div class="meal">
+                        <h2>Makan Siang</h2>
+                        <table id="ingredient-table-lunch">
+                            <tr>
+                                <th>Nama Bahan</th>
+                                <th>Nama Zat Gizi</th>
+                                <th>Berat Bahan (gram)</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="text" id="namaBahanInput" placeholder="Masukkan nama bahan"
+                                        list="namaBahanOptions">
+                                    <datalist id="namaBahanOptions"></datalist>
+                                </td>
+                                <td>
+                                    <input type="text" id="namaZatInput" placeholder="Masukkan nama zat gizi"
+                                        list="namaZatOptions">
+                                    <datalist id="namaZatOptions"></datalist>
+                                </td>
+                                <td><input type="number" name="beratBahan[]" placeholder="Masukkan berat bahan"></td>
+                            </tr>
+                        </table>
+                        <button type="button" onclick="addIngredientRow('ingredient-table-lunch')">Tambah
+                            Bahan</button>
+                        <button type="button" onclick="calculateSingleMeal('ingredient-table-lunch')">Hitung Zat Gizi
+                            Makan Siang</button>
+                    </div>
+                    <div class="meal">
+                        <h2>Selingan Sore</h2>
+                        <table id="ingredient-table-snack-afternoon">
+                            <tr>
+                                <th>Nama Bahan</th>
+                                <th>Nama Zat Gizi</th>
+                                <th>Berat Bahan (gram)</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="text" id="namaBahanInput" placeholder="Masukkan nama bahan"
+                                        list="namaBahanOptions">
+                                    <datalist id="namaBahanOptions"></datalist>
+                                </td>
+                                <td>
+                                    <input type="text" id="namaZatInput" placeholder="Masukkan nama zat gizi"
+                                        list="namaZatOptions">
+                                    <datalist id="namaZatOptions"></datalist>
+                                </td>
+                                <td><input type="number" name="beratBahan[]" placeholder="Masukkan berat bahan"></td>
+                            </tr>
+                        </table>
+                        <button type="button" onclick="addIngredientRow('ingredient-table-snack-afternoon')">Tambah
+                            Bahan</button>
+                        <button type="button" onclick="calculateSingleMeal('ingredient-table-snack-afternoon')">Hitung
+                            Zat Gizi Selingan Sore</button>
+
+                    </div>
+                    <div class="meal">
+                        <h2>Makan Malam</h2>
+                        <table id="ingredient-table-dinner">
+                            <tr>
+                                <th>Nama Bahan</th>
+                                <th>Nama Zat Gizi</th>
+                                <th>Berat Bahan (gram)</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="text" id="namaBahanInput" placeholder="Masukkan nama bahan"
+                                        list="namaBahanOptions">
+                                    <datalist id="namaBahanOptions"></datalist>
+                                </td>
+                                <td>
+                                    <input type="text" id="namaZatInput" placeholder="Masukkan nama zat gizi"
+                                        list="namaZatOptions">
+                                    <datalist id="namaZatOptions"></datalist>
+                                </td>
+                                <td><input type="number" name="beratBahan[]" placeholder="Masukkan berat bahan"></td>
+                            </tr>
+                        </table>
+                        <button type="button" onclick="addIngredientRow('ingredient-table-dinner')">Tambah
+                            Bahan</button>
+                        <button type="button" onclick="calculateSingleMeal('ingredient-table-dinner')">Hitung Zat Gizi
+                            Makan Malam</button>
+
+                    </div>
+                    <div class="meal">
+                        <h2>Selingan Malam</h2>
+                        <table id="ingredient-table-snack-night">
+                            <tr>
+                                <th>Nama Bahan</th>
+                                <th>Nama Zat Gizi</th>
+                                <th>Berat Bahan (gram)</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="text" id="namaBahanInput" placeholder="Masukkan nama bahan"
+                                        list="namaBahanOptions">
+                                    <datalist id="namaBahanOptions"></datalist>
+                                </td>
+                                <td>
+                                    <input type="text" id="namaZatInput" placeholder="Masukkan nama zat gizi"
+                                        list="namaZatOptions">
+                                    <datalist id="namaZatOptions"></datalist>
+                                </td>
+                                <td><input type="number" name="beratBahan[]" placeholder="Masukkan berat bahan"></td>
+                            </tr>
+                        </table>
+                        <button type="button" onclick="addIngredientRow('ingredient-table-snack-night')">Tambah
+                            Bahan</button>
+                        <button type="button" onclick="calculateSingleMeal('ingredient-table-snack-night')">Hitung Zat
+                            Gizi Selingan Malam</button>
+
+                    </div>
+
+                    <!-- all -->
+
+                    <div class="meal">
+                        <h2>Hitung Total Harian</h2>
+                        <table id="ingredient-table-all">
+                            <tr>
+                                <th>Nama Zat Gizi</th>
+                                <th>Total Kebutuhan Zat Gizi</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="text" id="namaZatInput" placeholder="Masukkan nama zat gizi"
+                                        list="namaZatOptions">
+                                    <datalist id="namaZatOptions"></datalist>
+                                </td>
+                                <td><input type="number" name="beratBahan[]"
+                                        placeholder="Masukkan Total Kebutuhan Zat Gizi"></td>
+                            </tr>
+                        </table>
+                        <button type="button" onclick="addDailyNutritionRow()">Tambah Bahan</button>
+                        <button type="button" onclick="calculateDailyNutritionStatus()">Hitung Zat Gizi Harian</button>
+                    </div>
+
+                </form>
             </div>
-            <ion-icon @click="navOpen = !navOpen"
-                class=" order-2 sm:order-1 lg:hidden cursor-pointer  hover:rotate-90 hover:transition-all ease-in-out duration-300 hover:pr-1 hover:pb-1 text-4xl hover:text-green-800"
-                name="reorder-two-outline">
-            </ion-icon>
-            <div class="order-4 hidden sm:hidden md:hidden lg:block lg:order-2 lg:pl-4">
-                <ul class="flex justify-center ">
-                    <li class="flex flex-row justify-center gap-9 md:gap-12">
-                        <button class="flex  justify-center flex-col items-center text-green-800 hover:">
-                            <!-- <ion-icon name="home-outline" class="text-md lg:hidden ></ion-icon> -->
-                            <span
-                                class="text-sm font-bold tracking-wide hover:border-b-2 py-1 px-4 hover:border-b-green-800 hover:transition-all hover:scale-105 hover:ease-in-out hover:duration-500 lg:text-xs">Home</span>
+            
 
-                        </button>
-                        <button class="flex  justify-center  flex-col items-center gap-1">
-                            <!-- <ion-icon name="fast-food-outline" class="text-md lg:hidden opacity-50"></ion-icon> -->
-                            <span
-                                class="text-sm font-normal tracking-wide hover:border-b-2 py-1 px-4 hover:border-b-green-800 hover:transition-all hover:scale-105 hover:ease-in-out hover:duration-500 lg:text-xs">Nutritions</span>
+            <script src="js/script.js"></script>
+            <script>
+                lucide.createIcons();
 
 
-                        </button>
-                        <button class="flex  justify-center  flex-col items-center gap-1">
-                            <!-- <ion-icon name="accessibility-outline" class="text-md lg:hidden opacity-50"></ion-icon> -->
-                            <span
-                                class="text-sm font-normal tracking-wide hover:border-b-2 py-1 px-4 hover:border-b-green-800 hover:transition-all hover:scale-105 hover:ease-in-out hover:duration-500 lg:text-xs">Body
-                            </span>
-                        </button>
-                        <button class="flex  justify-center  flex-col items-center gap-1">
-                            <!-- <ion-icon name="book-outline" class="text-md lg:hidden opacity-50"></ion-icon> -->
-                            <span
-                                class="text-sm font-normal tracking-wide hover:border-b-2 py-1 px-4 hover:border-b-green-800 hover:transition-all hover:scale-105 hover:ease-in-out hover:duration-500 lg:text-xs">Blogs</span>
-                        </button>
-                        <button @click="open = !open"
-                            class="flex  justify-center  flex-col items-center gap-1 transition-all ease-in-out">
-                            <!-- <ion-icon name="person-circle-outline" class="text-md lg:hidden opacity-50"></ion-icon> -->
-                            <span
-                                class="text-sm font-normal tracking-wide hover:border-b-2 py-1 px-4 hover:border-b-green-800 hover:transition-all hover:scale-105 hover:ease-in-out hover:duration-500 lg:text-xs">Contacts</span>
-                        </button>
-                    </li>
-                </ul>
-            </div>
-            <div class="order-3 hidden sm:block">
-                <a href="https://wa.link/nrnsd1"
-                    class="py-3 px-3 rounded-full tracking-wider text-green-800 text-sm">Register</a>
-                <a href="login.html"
-                    class="bg-green-800 py-3 px-16 lg:px-10 lg:py-2 rounded-full text-white tracking-wider text-sm">Login</a>
-            </div>
-        </div>
-        <div x-show="navOpen" x-data="{open: false}"
-            class=" lg:hidden bottom-0 bg-[#07300067] fixed w-full right-0 left-0 px-4 py-2 z-50 backdrop-blur-md">
-            <ul class="flex justify-center">
-                <li class="flex flex-row justify-center gap-9 md:gap-28 text-white">
-                    <a href="index.html" class="flex  justify-center flex-col items-center gap-1 text-green-800">
-                        <ion-icon name="home-outline" class="text-xl"></ion-icon>
-                        <span class="text-sm font-medium tracking-wider">Home</span>
-
-                    </a>
-                    <a href="" class="flex  justify-center  flex-col items-center gap-1">
-                        <ion-icon name="fast-food-outline" class="text-xl opacity-50"></ion-icon>
-                        <span class="text-sm font-normal tracking-wider opacity-50">Nutritions</span>
-
-                    </a>
-                    <a href="" class="flex  justify-center  flex-col items-center gap-1">
-                        <ion-icon name="accessibility-outline" class="text-xl opacity-50"></ion-icon>
-                        <span class="text-sm font-normal tracking-wider opacity-50 text-center">Body</span>
-
-                    </a>
-                    <a href="" class="flex  justify-center  flex-col items-center gap-1">
-                        <ion-icon name="book-outline" class="text-xl opacity-50"></ion-icon>
-                        <span class="text-sm font-normal tracking-wider opacity-50">Blogs</span>
-
-                    </a>
-                    <button @click="open = !open"
-                        class="flex  justify-center  flex-col items-center gap-1 transition-all ease-in-out">
-                        <ion-icon name="person-circle-outline" class="text-xl opacity-50"></ion-icon>
-                        <span class="text-sm font-normal tracking-wider opacity-50">Login</span>
-
-                    </button>
-                </li>
-            </ul>
-            <div x-show="open"
-                class="absolute bottom-24 flex flex-row gap-2 items-center w-full justify-center x-transition:enter="
-                transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-90"
-                x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-300"
-                x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-90"">
-                <a href=" https://wa.link/nrnsd1"
-                class=" font-extrabold py-3 px-7 rounded-full tracking-wider text-green-800 text-xs">Register</a>
-                <a href="login.html" class=" bg-green-800 py-3 px-7 rounded-full text-white tracking-wider text-xs">Log
-                    In</a>
-            </div>
-        </div>
-    </nav>
-
-    <section class="bg-black">
-        <main class="h-screen w-screen  opacity-40 bg-cover bg-no-repeat" style="background-image: url(img/bg.jpg);">
+            </script>
         </main>
     </section>
-    <script src="js/dataTest.js"></script>
-    <script src="js/login.js"></script>
-
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-
+    <footer class="w-screen flex flex-row justify-center items-center">
+        <p class="h-12 mt-4">Pengembang Web @fiebryhoga</p>
+    </footer>
 </body>
-
-
-<!-- <script src="https://unpkg.com/lucide@latest"></script> -->
-<!-- <script src="js/script.js"></script> -->
-<script>
-    lucide.createIcons();
-</script>
 
 </html>

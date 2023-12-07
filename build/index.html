@@ -13,12 +13,14 @@
     <link rel="icon" type="image/png" sizes="16x16" href="img/icons8-organic-food-48-2.png">
     <script src="//unpkg.com/alpinejs" defer></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+
 
 
 </head>
 
-<body>
-    <nav x-data="{open : false}" class=" w-screen h-12 fixed">
+<body x-data="{navOpen : false}">
+    <nav x-data="{open : false}" class=" w-screen h-12 top-0 bottom-0 fixed">
         <div class=" py-2 px-8 md:px-0 flex flex-row justify-between items-center hover:cursor-pointer sm:pr-10 md:pr-0 bg-white">
             <div class="flex flex-row justify-between items-center order-1 sm:order-2 sm:pl-16 sm:ml-12 md:px-0 md:ml-7">
                 <img class="h-8 opacity-80" src="img/logo.png" alt="logo">
@@ -250,27 +252,31 @@
             </ul>
         </div>
     </nav>
-    <section class="">
+    <section " class="bg-white">
         <main class=" h-screen w-screen pt-20 md:pt-12 md:mt-1 md:pl-80">
             <div class="px-10 flex flex-col items-center space-y-6 sm:px-16">
                 <img class="w-64 pb-8" src="img/home.png" alt="">
-                <h1 class="font-extrabold text-3xl tracking-wider text-green-800">
-                    Nutrition Calculator
+                <h1 class="font-extrabold text-2xl tracking-wider text-green-800">
+                    Nutrition Calculate
                 </h1>
                 <p class="items-center text-justify tracking-wide leading-8 font-medium text-sm sm:px-20 md:px-44 md:text-center">Nutrition Calculator adalah <span class="text-green-800"><b>web perhitungan gizi</b></span> yang komprehensif dengan fitur lengkap dan data
                     terkini sesuai dengan standar <span class="text-green-800"><b>TKPI 2020</b></span>, membantu Anda dengan cepat dan akurat merumuskan asupan
                     nutrisi harian untuk gaya hidup sehat.</p>
             </div>
-            <div class=" flex flex-col pt-4 justify center items-center md:pt-16">
-                <P class="w-20 h-20 py-7 border-2 border-green-800 text-center rounded-full tracking-wider text-sm hover:bg-gray-100 cursor-pointer">Start</P>
+            <div class=" flex flex-col pt-1 justify center items-center md:pt-16 mb-6">
+                <a @click.stop="navOpen = !navOpen; document.getElementById('nextSection').scrollIntoView({ behavior: 'smooth' });" class="w-20 h-20 py-7 border-2 border-green-800 text-center rounded-full tracking-wider text-sm hover:bg-gray-100 cursor-pointer" href="login.html">Start</a>
             </div>
             <!-- <div class="w-1/2 bg-black">
                     halo
                 </div> -->
         </main>
     </section>
-    <section class="bg-white">
-        <main class="h-[200vh] w-screen pt-20 md:pt-12 md:mt-1 md:pl-80">
+    <section x-show="navOpen" x-transition:enter="transition ease-out duration-700"
+    x-transition:enter-start="opacity-0 transform ease-out -translate-y-8"
+    x-transition:enter-end="opacity-100 transform ease-out translate-y-7"
+    
+    id="nextSection" class="bg-white">
+        <main class="h-[200vh] w-screen py-12 md:pt-12 md:pl-80">
             <div class="px-10 flex flex-col justify-center space-y-8">
                 <h2 class=" font-extrabold text-xl text-center text-green-800">Menawarkan Keunggulan Fitur</h2>
                 <p class="text-justify tracking-wider leading-8 text-sm ">Nutrition Calculator unggul dengan fitur perhitungan kebutuhan energi dan asupan zat gizi harian, didukung oleh data terkini TKPI 2020 untuk perencanaan makanan yang optimal</p>
@@ -303,5 +309,15 @@
 <script>
     lucide.createIcons();
 </script>
+
+<script>
+    const startButton = document.querySelector('.start-button');
+    const nextSection = document.getElementById('nextSection');
+    
+    startButton.addEventListener('click', () => {
+      navOpen = !navOpen;
+      nextSection.scrollIntoView({ behavior: 'smooth' });
+    });
+    </script>
 
 </html>
