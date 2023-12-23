@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator IMT dan IBM</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UAP</title>
+    <link rel="stylesheet" href="build/css/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            /* margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: center; */
+        }
+
+        /* #calculator {
+            background-color: #fff;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        } */
+
+        input {
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body class="flex  flex-col justify-center items-center py-10 ">
+    <h1>callll</h1>
+    <h1 class=" ">CALCULATOR</h1>
+    <div class="mt-20" id="calculator">
+        <h2>Kalkulator IMT dan IBM</h2>
+        <label for="berat">Berat Badan (kg):</label>
+        <input type="number" id="berat" placeholder="Masukkan berat badan" required>
+
+        <label for="tinggi">Tinggi Badan (m):</label>
+        <input type="number" id="tinggi" placeholder="Masukkan tinggi badan" required>
+
+        <button onclick="hitungIMTIBM()">Hitung</button>
+
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function hitungIMTIBM() {
+            var berat = parseFloat(document.getElementById('berat').value);
+            var tinggi = parseFloat(document.getElementById('tinggi').value);
+
+            if (!isNaN(berat) && !isNaN(tinggi) && tinggi > 0 && berat > 0) {
+                // Hitung IMT
+                var imt = berat / (tinggi * tinggi);
+
+                // Hitung IBM Ideal
+                var ibmIdeal = 22 * (tinggi * tinggi);
+
+                // Tampilkan hasil
+                document.getElementById('result').innerHTML = `
+          <p>IMT Anda: ${imt.toFixed(2)}</p>
+          <p>IBM Ideal Anda: ${ibmIdeal.toFixed(2)}</p>
+        `;
+            } else {
+                document.getElementById('result').innerHTML = "Masukan tidak valid. Pastikan berat dan tinggi valid.";
+            }
+        }
+    </script>
+
+    <!-- ... (kode sebelumnya) ... -->
+
+    <script>
+        function hitungIMTIBM() {
+            var berat = parseFloat(document.getElementById('berat').value);
+            var tinggi = parseFloat(document.getElementById('tinggi').value);
+            var resultElement = document.getElementById('result');
+
+            if (!isNaN(berat) && !isNaN(tinggi) && tinggi > 0 && berat > 0) {
+                // Hitung IMT
+                var imt = berat / (tinggi * tinggi);
+
+                // Hitung IBM Ideal
+                var ibmIdeal = 22 * (tinggi * tinggi);
+
+                // Tentukan kategori IMT
+                var kategori = "";
+                if (imt < 18.5) {
+                    kategori = "Kurus";
+                } else if (imt >= 18.5 && imt <= 24.9) {
+                    kategori = "Normal atau Ideal";
+                } else if (imt >= 25 && imt <= 29.9) {
+                    kategori = "Berlebih Berat Badan";
+                } else {
+                    kategori = "Obesitas";
+                }
+
+                // Tampilkan hasil
+                resultElement.innerHTML = `
+          <p>IMT Anda: ${imt.toFixed(2)}</p>
+          <p>IBM Ideal Anda: ${ibmIdeal.toFixed(2)}</p>
+          <p>Kategori IMT: ${kategori}</p>
+        `;
+
+            } else {
+                resultElement.innerHTML = "Masukan tidak valid. Pastikan berat dan tinggi valid.";
+            }
+        }
+    </script>
+
+    <!-- ... (kode setelahnya) ... -->
+
+</body>
+
+</html>
