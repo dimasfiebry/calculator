@@ -144,7 +144,7 @@
             x-transition:leave="transition ease-in duration-700"
             x-transition:leave-start="opacity-100 transform translate-y-7"
             x-transition:leave-end="opacity-0 transform -translate-y-8"
-            class=" bg-white transition-all ease-in-out fixed inset-x-0 top-12 md:hidden">
+            class=" bg-white transition-all ease-in-out fixed inset-x-0 top-12 md:hidden h-screen">
             <ul class="">
                 <li class=" flex flex-col justify-center items-center">
                     <a href=""
@@ -253,18 +253,18 @@
         </div>
     </nav>
     <section " class="bg-white">
-        <main class=" h-screen w-screen py-20 md:pt-12 md:mt-1 md:pl-80">
+        <main class=" h-screen w-screen py-20 md:py-24 md:pl-80">
             <div class="px-10 flex flex-col items-center space-y-6 sm:px-16">
-                <img class="w-56 pb-2" src="img/home.png" alt="">
+                <img class="w-56 pb-2 md:w-64" src="img/home.png" alt="">
                 <h1 class="font-extrabold text-2xl tracking-wider text-green-800">
                     Nutrition Calculate
                 </h1>
-                <p class="items-center text-justify tracking-wide leading-8  font-medium text-sm sm:px-20 sm:text-justify md:px-24   md:text-center">Nutrition Calculator adalah <span class="text-green-800"><b>web perhitungan gizi</b></span> yang komprehensif dengan fitur lengkap dan data
+                <p class="items-center text-justify tracking-wide leading-8  font-medium text-sm sm:px-20 sm:text-justify md:px-44 md:text-center">Nutrition Calculator adalah <span class="text-green-800"><b>web perhitungan gizi</b></span> yang komprehensif dengan fitur lengkap dan data
                     terkini sesuai dengan standar <span class="text-green-800"><b>TKPI 2020</b></span>, membantu Anda dengan cepat dan akurat merumuskan asupan
                     nutrisi harian untuk gaya hidup sehat.</p>
             </div>
-            <div class=" flex flex-col justify-center items-center md:pt-16 mt-2 py-6">
-                <a @click.stop="navOpen = !navOpen; document.getElementById('nextSection').scrollIntoView({ behavior: 'smooth' });" class="w-20 h-20 py-7 border-2 border-green-800 text-center rounded-full tracking-wider text-sm hover:bg-gray-100 cursor-pointer" href="html/login.html">Start</a>
+            <div class=" flex flex-col justify-center items-center md:pt-12 mt-2 py-6">
+                <a @click.stop="navOpen = !navOpen; document.getElementById('nextSection').scrollIntoView({ behavior: 'smooth' });" class="flex flex-row justify-center w-20 h-20 py-7 border-2 border-green-800 text-justify rounded-full md:w-20 md:h-20 md:justify-center md:items-center md:border-3 tracking-wider text-sm hover:bg-gray-100 text-green-800 md:hover:bg-green-800 md:hover:text-white md:transition-all md:ease-in-out md:duration-300 cursor-pointer" href="html/login.html">Join Us</a>
             </div>
             <!-- <div class="w-1/2 bg-black">
                     halo
