@@ -747,6 +747,14 @@ video {
   height: 180;
 }
 
+.h-\[210vh\] {
+  height: 210vh;
+}
+
+.h-\[206vh\] {
+  height: 206vh;
+}
+
 .w-1\/2 {
   width: 50%;
 }
@@ -947,6 +955,12 @@ video {
   --tw-space-y-reverse: 0;
   margin-top: calc(2rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(2rem * var(--tw-space-y-reverse));
+}
+
+.space-y-4 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1rem * var(--tw-space-y-reverse));
 }
 
 .rounded-2xl {
