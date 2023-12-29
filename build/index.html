@@ -21,8 +21,10 @@
 
 <body x-data="{navOpen : false}" class="bg-white">
     <nav x-data="{open : false}" class=" w-screen h-12 top-0 bottom-0 fixed md:w-80">
-        <div class=" py-2 px-8 md:px-0 flex flex-row justify-between items-center hover:cursor-pointer sm:pr-10 md:pr-0 bg-white">
-            <div class="flex flex-row justify-between items-center order-1 sm:order-2 sm:pl-16 sm:ml-12 md:px-0 md:ml-7">
+        <div
+            class=" py-2 px-8 md:px-0 flex flex-row justify-between items-center hover:cursor-pointer sm:pr-10 md:pr-0 bg-white">
+            <div
+                class="flex flex-row justify-between items-center order-1 sm:order-2 sm:pl-16 sm:ml-12 md:px-0 md:ml-7">
                 <img class="h-8 opacity-80" src="img/logo.png" alt="logo">
                 <p class="font-semibold text-xs text-green-800 tracking-wider">Nutrition <span
                         class="text-yellow-700">Calculate</span></p>
@@ -144,7 +146,7 @@
             x-transition:leave="transition ease-in duration-700"
             x-transition:leave-start="opacity-100 transform translate-y-7"
             x-transition:leave-end="opacity-0 transform -translate-y-8"
-            class=" bg-white transition-all ease-in-out fixed inset-x-0 top-12 md:hidden h-screen">
+            class=" bg-white transition-all ease-in-out fixed inset-x-0 top-12 md:hidden h-screen z-50">
             <ul class="">
                 <li class=" flex flex-col justify-center items-center">
                     <a href=""
@@ -252,19 +254,24 @@
             </ul>
         </div>
     </nav>
-    <section " class="bg-white">
+    <section " class=" bg-white">
         <main class=" h-screen w-screen py-20 md:py-24 md:pl-80">
             <div class="px-10 flex flex-col items-center space-y-6 sm:px-16">
                 <img class="w-56 pb-2 md:w-64" src="img/home.png" alt="">
                 <h1 class="font-extrabold text-2xl tracking-wider text-green-800">
                     Nutrition Calculate
                 </h1>
-                <p class="items-center text-justify tracking-wide leading-8  font-medium text-sm sm:px-20 sm:text-justify md:px-44 md:text-center">Nutrition Calculator adalah <span class="text-green-800"><b>web perhitungan gizi</b></span> yang komprehensif dengan fitur lengkap dan data
-                    terkini sesuai dengan standar <span class="text-green-800"><b>TKPI 2020</b></span>, membantu Anda dengan cepat dan akurat merumuskan asupan
+                <p
+                    class="items-center text-justify tracking-wide leading-8  font-medium text-sm sm:px-20 sm:text-justify md:px-44 md:text-center">
+                    Nutrition Calculator adalah <span class="text-green-800"><b>web perhitungan gizi</b></span> yang
+                    komprehensif dengan fitur lengkap dan data
+                    terkini sesuai dengan standar <span class="text-green-800"><b>TKPI 2020</b></span>, membantu Anda
+                    dengan cepat dan akurat merumuskan asupan
                     nutrisi harian untuk gaya hidup sehat.</p>
             </div>
             <div class=" flex flex-col justify-center items-center md:pt-12 mt-2 py-6">
-                <a class="flex flex-row justify-center w-20 h-20 py-7 border-2 border-green-800 text-justify rounded-full md:w-20 md:h-20 md:justify-center md:items-center md:border-3 tracking-wider text-sm hover:bg-gray-100 text-green-800 md:hover:bg-green-800 md:hover:text-white md:transition-all md:ease-in-out md:duration-300 cursor-pointer" href="html/login.html">Join Us</a>
+                <a class="flex flex-row justify-center w-20 h-20 py-7 border-2 border-green-800 text-justify rounded-full md:w-20 md:h-20 md:justify-center md:items-center md:border-3 tracking-wider text-sm hover:bg-gray-100 text-green-800 md:hover:bg-green-800 md:hover:text-white md:transition-all md:ease-in-out md:duration-300 cursor-pointer"
+                    href="html/login.html">Join Us</a>
             </div>
             <!-- <div class="w-1/2 bg-black">
                     halo
@@ -286,9 +293,11 @@
                         <img class="h-full w-full rounded-t-2xl" src="img/bg.jpg" alt="">
                     </div>
                     <h3 class="text-left font-bold text-sm py-2 px-6 text-green-800">Cek Kebutuhan Energi Harian</h3>
-                    <p class="px-6 leading-5 pb-3 text-justify text-xs">Hitung energi dan zat gizi untuk perencanaan makan sehat dengan
+                    <p class="px-6 leading-5 pb-3 text-justify text-xs">Hitung energi dan zat gizi untuk perencanaan
+                        makan sehat dengan
                         cepat</p>
-                    <a class="text-xs tracking-widest text-green-800 hover:text-yellow-800 justify-start items-start hover:scale-110 hover:px-8 flex flex-col px-6" href="html/login.html">Coba Sekarang</a>
+                    <a class="text-xs tracking-widest text-green-800 hover:text-yellow-800 justify-start items-start hover:scale-110 hover:px-8 flex flex-col px-6"
+                        href="html/login.html">Coba Sekarang</a>
                 </div>
                 <div
                     class="h-80 w-64 rounded-2xl shadow-lg shadow-gray-300 hover:scale-110 transition-all ease-in-out duration-500 hover:shadow-2xl hover:shadow-green-800">
@@ -296,9 +305,11 @@
                         <img class="h-full w-full rounded-t-2xl" src="img/bg.jpg" alt="">
                     </div>
                     <h3 class="text-left font-bold text-sm py-2 px-6 text-green-800">Cek Kebutuhan Energi Harian</h3>
-                    <p class="px-6 leading-5 pb-3 text-justify text-xs">Hitung energi dan zat gizi untuk perencanaan makan sehat dengan
+                    <p class="px-6 leading-5 pb-3 text-justify text-xs">Hitung energi dan zat gizi untuk perencanaan
+                        makan sehat dengan
                         cepat</p>
-                    <a class="text-xs tracking-widest text-green-800 hover:text-yellow-800 justify-start items-start hover:scale-110 hover:px-8 flex flex-col px-6" href="html/login.html">Coba Sekarang</a>
+                    <a class="text-xs tracking-widest text-green-800 hover:text-yellow-800 justify-start items-start hover:scale-110 hover:px-8 flex flex-col px-6"
+                        href="html/login.html">Coba Sekarang</a>
                 </div>
                 <div
                     class="h-80 w-64 rounded-2xl shadow-lg shadow-gray-300 hover:scale-110 transition-all ease-in-out duration-500 hover:shadow-2xl hover:shadow-green-800">
@@ -306,9 +317,11 @@
                         <img class="h-full w-full rounded-t-2xl" src="img/bg.jpg" alt="">
                     </div>
                     <h3 class="text-left font-bold text-sm py-2 px-6 text-green-800">Cek Kebutuhan Energi Harian</h3>
-                    <p class="px-6 leading-5 pb-3 text-justify text-xs">Hitung energi dan zat gizi untuk perencanaan makan sehat dengan
+                    <p class="px-6 leading-5 pb-3 text-justify text-xs">Hitung energi dan zat gizi untuk perencanaan
+                        makan sehat dengan
                         cepat</p>
-                    <a class="text-xs tracking-widest text-green-800 hover:text-yellow-800 justify-start items-start hover:scale-110 hover:px-8 flex flex-col px-6" href="html/login.html">Coba Sekarang</a>
+                    <a class="text-xs tracking-widest text-green-800 hover:text-yellow-800 justify-start items-start hover:scale-110 hover:px-8 flex flex-col px-6"
+                        href="html/login.html">Coba Sekarang</a>
                 </div>
             </div>
 
@@ -316,7 +329,7 @@
 
     </section>
     <section class="bg-white">
-        <main class="h-screen w-screen flex flex-col  items-center md:pl-80 pt-16">
+        <main class="h-full w-screen flex flex-col  items-center md:pl-80 pt-16">
             <div class="flex flex-col items-center gap-6">
                 <H1 class="font-extrabold text-xl text-green-800 tracking-wider">Membership Premium</H1>
                 <p class="text-sm px-12 text-justify tracking-wider leading-7">Nutrical kini hanya dapat diakses melalui
@@ -325,11 +338,14 @@
                     dengan pelajar.</p>
             </div>
             <div class="h-30 w-72 pt-10 flex flex-col justify-center px-1 gap-4">
-                <div class="bg-black border-2 border-green-800 h-20 rounded-lg flex justify-center hover:scale-110 hover:transition-all hover:ease-in-out hover:duration-500">
-                    <img class="w-full object-cover h-ful opacity-60" src="../img/paket1.jpg" alt="">
-                    <h2 class="text-sm font-semibold tracking-widest absolute text-white translate-y-2 translate-x-3">Weekly</h2>
+                <div
+                    class="bg-black border-2 border-green-800 h-20 rounded-lg flex justify-center hover:scale-110 hover:transition-all hover:ease-in-out hover:duration-500">
+                    <img class="w-full object-cover h-ful opacity-60" src="img/paket1.jpg" alt="">
+                    <h2 class="text-sm font-semibold tracking-widest absolute text-white translate-y-2 translate-x-3">
+                        Weekly</h2>
                     <p class="text-xs font-normal tracking-widest absolute text-white translate-y-6 -translate-x-24">
-                        <del>17K / Week</del></p>
+                        <del>17K / Week</del>
+                    </p>
                     <p class=" text-lg font-normal tracking-widest absolute text-white translate-y-7 translate-x-3">
                         12K / Week</p>
                     <p
@@ -338,40 +354,56 @@
 
 
                 </div>
-            <div class="h-30 w-72 pt-10 flex flex-col justify-center px-1 gap-4">
-                <div class="bg-black border-2 border-green-800 h-20 rounded-lg flex justify-center hover:scale-110 hover:transition-all hover:ease-in-out hover:duration-500">
-                    <img class="w-full object-cover h-ful opacity-60" src="../img/paket1.jpg" alt="">
-                    <h2 class="text-sm font-semibold tracking-widest absolute text-white translate-y-2 translate-x-3">Monthly</h2>
-                    <p class="text-xs font-normal tracking-widest absolute text-white translate-y-6 -translate-x-24">
-                        <del>70K / Month</del></p>
-                    <p class=" text-lg font-normal tracking-widest absolute text-white translate-y-7 translate-x-3">
-                        49K / Month</p>
-                    <p
-                        class="text-sm text-white bg-red-800 absolute translate-x-32 px-4 rounded-sm -translate-y-2 tracking-widest py-2 text-center rotate-45">
-                        Off 30%</p>
+                <div class="h-30 w-72 pt-10 flex flex-col justify-center px-1 gap-4">
+                    <div
+                        class="bg-black border-2 border-green-800 h-20 rounded-lg flex justify-center hover:scale-110 hover:transition-all hover:ease-in-out hover:duration-500">
+                        <img class="w-full object-cover h-ful opacity-60" src="img/paket1.jpg" alt="">
+                        <h2
+                            class="text-sm font-semibold tracking-widest absolute text-white translate-y-2 translate-x-3">
+                            Monthly</h2>
+                        <p
+                            class="text-xs font-normal tracking-widest absolute text-white translate-y-6 -translate-x-24">
+                            <del>70K / Month</del>
+                        </p>
+                        <p class=" text-lg font-normal tracking-widest absolute text-white translate-y-7 translate-x-3">
+                            49K / Month</p>
+                        <p
+                            class="text-sm text-white bg-red-800 absolute translate-x-32 px-4 rounded-sm -translate-y-2 tracking-widest py-2 text-center rotate-45">
+                            Off 30%</p>
 
 
-                </div>
-            <div class="h-30 w-72 pt-10 flex flex-col justify-center px-1 gap-4">
-                <div class="bg-black border-2 border-green-800 h-20 rounded-lg flex justify-center hover:scale-110 hover:transition-all hover:ease-in-out hover:duration-500">
-                    <img class="w-full object-cover h-ful opacity-60" src="../img/paket1.jpg" alt="">
-                    <h2 class="text-sm font-semibold tracking-widest absolute text-white translate-y-2 translate-x-3">3rd Monthly</h2>
-                    <p class="text-xs font-normal tracking-widest absolute text-white translate-y-6 -translate-x-20">
-                        <del>190k / 3rd Month</del></p>
-                    <p class=" text-lg font-normal tracking-widest absolute text-white translate-y-10 translate-x-3">
-                        133k / 3rd Month</p>
-                    <p
-                        class="text-sm text-white bg-red-800 absolute translate-x-32 px-4 rounded-sm -translate-y-2 tracking-widest py-2 text-center rotate-45">
-                        Off 30%</p>
+                    </div>
+                    <div class="h-30 w-72 pt-10 flex flex-col justify-center px-1 gap-4">
+                        <div
+                            class="bg-black border-2 border-green-800 h-20 rounded-lg flex justify-center hover:scale-110 hover:transition-all hover:ease-in-out hover:duration-500">
+                            <img class="w-full object-cover h-ful opacity-60" src="img/paket1.jpg" alt="">
+                            <h2
+                                class="text-sm font-semibold tracking-widest absolute text-white translate-y-2 translate-x-3">
+                                3rd Monthly</h2>
+                            <p
+                                class="text-xs font-normal tracking-widest absolute text-white translate-y-6 -translate-x-20">
+                                <del>190k / 3rd Month</del>
+                            </p>
+                            <p
+                                class=" text-lg font-normal tracking-widest absolute text-white translate-y-10 translate-x-3">
+                                133k / 3rd Month</p>
+                            <p
+                                class="text-sm text-white bg-red-800 absolute translate-x-32 px-4 rounded-sm -translate-y-2 tracking-widest py-2 text-center rotate-45">
+                                Off 30%</p>
 
 
-                </div>
-                
-            </div>
+                        </div>
+
+                    </div>
 
         </main>
     </section>
-    
+    <footer
+        class="text-slate-300 text-xs absolute flex flex-col translate-y-80 lg:translate-y-[370px] justify-center items-center text-center backdrop-blur-sm w-screen h-[6.4%] leading-5">
+        <p>This website was developed by Dimas Fiebry</p>
+        <p>Copyright ©2023 All Rights Reserved</p>
+    </footer>
+
     <script src="js/dataTest.js"></script>
     <script src="js/html/login.htmllogin.js"></script>
 
@@ -391,11 +423,11 @@
 <script>
     const startButton = document.querySelector('.start-button');
     const nextSection = document.getElementById('nextSection');
-    
+
     startButton.addEventListener('click', () => {
-      navOpen = !navOpen;
-      nextSection.scrollIntoView({ behavior: 'smooth' });
+        navOpen = !navOpen;
+        nextSection.scrollIntoView({ behavior: 'smooth' });
     });
-    </script>
+</script>
 
 </html>
