@@ -29,15 +29,6 @@
                 <p class="font-semibold text-xs text-green-800 tracking-wider">Nutrition <span
                         class="text-yellow-700">Calculate</span></p>
             </div>
-            <!-- <div class="order-2 hidden sm:block sm:order-3 md:px-8">
-                Daftar
-                <a href="html/login.html" class="px-4 py-4 tracking-wider text-xs">
-                </a>
-                <a href="html/login.html"
-                    class="bg-green-700 rounded-full w-30 px-6 py-2 text-white tracking-wider text-xs hover:bg-white hover:border-2 hover:border-green-700 hover:text-green-600 border border-green-600">
-                    Log In
-                </a>
-            </div> -->
 
             <ion-icon @click="open = !open"
                 class=" h-6 order-3 sm:order-1 md:hidden cursor-pointer  hover:rotate-90 hover:transition-all ease-in-out duration-300 hover:pr-1 hover:pb-1 hover:scale-90 text-4xl hover:text-green-800"
@@ -255,7 +246,7 @@
         </div>
     </nav>
     <section " class=" bg-white">
-        <main class=" h-screen w-screen py-20 md:py-24 md:pl-80">
+        <main class=" h-full w-screen py-20 md:py-24 md:pl-80">
             <div class="px-10 flex flex-col items-center space-y-6 sm:px-16">
                 <img class="w-56 pb-2 md:w-64" src="img/home.png" alt="">
                 <h1 class="font-extrabold text-2xl tracking-wider text-green-800">
@@ -273,13 +264,11 @@
                 <a class="flex flex-row justify-center w-20 h-20 py-7 border-2 border-green-800 text-justify rounded-full md:w-20 md:h-20 md:justify-center md:items-center md:border-3 tracking-wider text-sm hover:bg-gray-100 text-green-800 md:hover:bg-green-800 md:hover:text-white md:transition-all md:ease-in-out md:duration-300 cursor-pointer"
                     href="html/login.html">Join Us</a>
             </div>
-            <!-- <div class="w-1/2 bg-black">
-                    halo
-                </div> -->
+            
         </main>
     </section>
     <section class="bg-white">
-        <main class="h-[190vh] w-screen md:pt-12 md:pl-80">
+        <main class="h-full w-screen md:pt-12 md:pl-80 md:h-screen">
             <div class="px-10 flex flex-col justify-center items-center space-y-4 pt-12">
                 <h2 class=" font-extrabold text-xl text-center text-green-800">Menawarkan Keunggulan Fitur</h2>
                 <p class="text-justify tracking-wider leading-8 text-sm px-2">Nutrition Calculator unggul dengan fitur
@@ -329,7 +318,7 @@
 
     </section>
     <section class="bg-white">
-        <main class="h-full w-screen flex flex-col  items-center md:pl-80 pt-16">
+        <main class="h-full w-screen flex flex-col  items-center md:pl-80 pt-16 md:pt-0">
             <div class="flex flex-col items-center gap-6">
                 <H1 class="font-extrabold text-xl text-green-800 tracking-wider">Membership Premium</H1>
                 <p class="text-sm px-12 text-justify tracking-wider leading-7">Nutrical kini hanya dapat diakses melalui
@@ -339,7 +328,7 @@
             </div>
             <div class="h-30 w-72 pt-10 flex flex-col justify-center px-1 gap-4">
                 <div
-                    class="bg-black border-2 border-green-800 h-20 rounded-lg flex justify-center hover:scale-110 hover:transition-all hover:ease-in-out hover:duration-500">
+                    class="bg-black border-2 border-green-800 h-20 rounded-lg flex justify-center hover:scale-110 hover:transition-all hover:ease-in-out hover:duration-500 w-72">
                     <img class="w-full object-cover h-ful opacity-60" src="img/paket1.jpg" alt="">
                     <h2 class="text-sm font-semibold tracking-widest absolute text-white translate-y-2 translate-x-3">
                         Weekly</h2>
@@ -356,7 +345,7 @@
                 </div>
                 <div class="h-30 w-72 pt-10 flex flex-col justify-center px-1 gap-4">
                     <div
-                        class="bg-black border-2 border-green-800 h-20 rounded-lg flex justify-center hover:scale-110 hover:transition-all hover:ease-in-out hover:duration-500">
+                        class="bg-black border-2 border-green-800 h-20 rounded-lg flex justify-center hover:scale-110 hover:transition-all hover:ease-in-out hover:duration-500 w-72">
                         <img class="w-full object-cover h-ful opacity-60" src="img/paket1.jpg" alt="">
                         <h2
                             class="text-sm font-semibold tracking-widest absolute text-white translate-y-2 translate-x-3">
@@ -375,7 +364,7 @@
                     </div>
                     <div class="h-30 w-72 pt-10 flex flex-col justify-center px-1 gap-4">
                         <div
-                            class="bg-black border-2 border-green-800 h-20 rounded-lg flex justify-center hover:scale-110 hover:transition-all hover:ease-in-out hover:duration-500">
+                            class="bg-black border-2 border-green-800 h-20 rounded-lg flex justify-center hover:scale-110 hover:transition-all hover:ease-in-out hover:duration-500 w-72">
                             <img class="w-full object-cover h-ful opacity-60" src="img/paket1.jpg" alt="">
                             <h2
                                 class="text-sm font-semibold tracking-widest absolute text-white translate-y-2 translate-x-3">
@@ -399,7 +388,7 @@
         </main>
     </section>
     <footer
-        class="text-slate-300 text-xs absolute flex flex-col translate-y-80 lg:translate-y-[370px] justify-center items-center text-center backdrop-blur-sm w-screen h-[6.4%] leading-5">
+        class="text-slate-300 text-xs absolute flex flex-col translate-y-10 lg:translate-y-[370px] justify-center items-center text-center backdrop-blur-sm w-screen h-[6.4%] leading-5">
         <p>This website was developed by Dimas Fiebry</p>
         <p>Copyright ©2023 All Rights Reserved</p>
     </footer>
