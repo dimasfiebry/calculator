@@ -15,8 +15,6 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
 
-
-
 </head>
 
 <body x-data="{navOpen : false}" class="bg-white">
@@ -49,7 +47,7 @@
                         <a href="html/login.html"
                             class="flex flex-row hover:text-yellow-700 items-center text-xs space-x-2 ">
                             <ion-icon name="battery-dead-outline"></ion-icon>
-                            <p>Kebutuhan Energi Katch - McArdle</p>
+                            <p>Kebutuhan Energi Katch - Harris Bennedict</p>
                         </a>
                         <a href="html/login.html" class="flex flex-row hover:text-yellow-700 items-center space-x-2 ">
                             <ion-icon name="battery-half-outline"></ion-icon>
@@ -57,7 +55,7 @@
                         </a>
                         <a href="html/login.html" class="flex flex-row hover:text-yellow-700 items-center space-x-2 ">
                             <ion-icon name="battery-full-outline"></ion-icon>
-                            <p>Kebutuhan Energi Katch - Harris Bennedict</p>
+                            <p>Kebutuhan BMI</p>
                         </a>
                         <a href="html/login.html" class="flex flex-row hover:text-yellow-700 items-center space-x-2 ">
                             <ion-icon name="water-outline"></ion-icon>
@@ -148,7 +146,8 @@
                     <div href="../"
                         class=" gap-3 flex-col w-full text-green-900 mb-6 justify-center flex text-xs tracking-wider text-center font-medium">
                         <p class=" pb-1 text-slate-400 text-xs">Kebutuhan Energi</p>
-                        <a href="1.mcardle.html" class="flex flex-row hover:text-yellow-700 pl-3 items-center space-x-2 ">
+                        <a href="1.mcardle.html"
+                            class="flex flex-row hover:text-yellow-700 pl-3 items-center space-x-2 ">
                             <ion-icon name="battery-dead-outline"></ion-icon>
                             <p>Kebutuhan Energi - Harris Bennedict</p>
                         </a>
@@ -156,7 +155,7 @@
                             <ion-icon name="battery-half-outline"></ion-icon>
                             <p>Kebutuhan Energi - Mifflin St Jeor</p>
                         </a>
-                        <a href="hitungBMI.html"
+                        <a href="2.harris.html"
                             class="flex flex-row hover:text-yellow-700 pl-3 items-center space-x-2 ">
                             <ion-icon name="battery-full-outline"></ion-icon>
                             <p>Hitung BMI</p>
@@ -237,145 +236,85 @@
         </div>
     </nav>
     </section>
-    <section " class=" bg-white">
-        <main class=" h-[84vh] md:h-[90vh] w-screen py-20 md:pl-80 md:py-28">
-            <div class="px-10 flex flex-col items-center space-y-6 sm:px-16 md:gap-6">
-                <img class="w-56 pb-2 md:w-64" src="../img/home.png" alt="">
-                <h1 class="font-extrabold text-2xl tracking-wider text-green-800">
-                    Nutrition Calculate
-                </h1>
-                <p
-                    class="items-center text-justify tracking-wide leading-8  font-medium text-sm sm:px-20 sm:text-justify md:leading-10 md:px-48 md:text-center">
-                    Nutrition Calculator adalah <span class="text-green-800"><b>web perhitungan gizi</b></span> yang
-                    komprehensif dengan fitur lengkap dan data
-                    terkini sesuai dengan standar <span class="text-green-800"><b>TKPI 2020</b></span>, membantu Anda
-                    dengan cepat dan akurat merumuskan asupan
-                    nutrisi harian untuk gaya hidup sehat.</p>
-            </div>
-
-        </main>
-    </section>
     <section class="bg-white">
-        <main class="h-[200vh] md:h-[60vh] w-screen md:pt-4 md:pl-80">
-            <div class="px-10 flex flex-col justify-center items-center space-y-6 pt-16">
-                <h2 class=" font-extrabold text-xl text-center text-green-800">Menawarkan Keunggulan Fitur</h2>
-                <p class="text-justify tracking-wider leading-8 text-sm md:px-52 md:text-center md:pt-6">Nutrition
-                    Calculator unggul dengan fitur
-                    perhitungan kebutuhan energi dan asupan zat gizi harian, didukung oleh data terkini TKPI 2020 untuk
-                    perencanaan makanan yang optimal</p>
-            </div>
-            <div class="flex flex-col items-center py-10 gap-16 md:flex-row md:pt-16 justify-center">
-                <div
-                    class="h-80 w-64 rounded-2xl shadow-lg shadow-gray-300 hover:scale-110 transition-all ease-in-out duration-500 hover:shadow-2xl hover:shadow-green-800">
-                    <div class="h-3/6 rounded-2xl">
-                        <img class="h-full w-full rounded-t-2xl" src="../img/kebutuhan.jpg" alt="">
+        <main class="flex flex-col justify-center items-center h-full">
+            <div class="backdrop-filter backdrop-blur-sm bg-opacity-20 mt-20 bg-green-900 w-72 md:w-72 lg:w-96 border-[0.8px] h-full py-10 border-slate-100 rounded-xl pt-10">
+                <h1 class="text-center text-xl font-extrabold text-green-800 border-b-2 pb-6 font-sans tracking-widest">
+                    BMI</h1>
+                <div class="flex flex-col items-center space-y-2 pt-4">
+                    <label class="text-green-800 text-sm text-center tracking-wider" for="gender">Gender</label>
+                    <select id="gender" name="gender"
+                            class="block appearance-none w-48 optional:text-gray-400 optional:text-xs bg-transparent border border-gray-400 hover:border-gray-500 px-4 py-2 rounded leading-tight focus:outline-none">
+                        <option value="male">Laki-laki</option>
+                        <option value="female">Perempuan</option>
+                    </select>
+                    <label class="text-green-800 text-sm text-center mb-2 tracking-wider" for="age">Usia</label>
+                    <input class="xl:w-64 lg:w-54 md:w-44 sm:w-24 xs:w-18 h-10 bg-transparent text-white placeholder:italic pl-6 placeholder:text-xs placeholder:tracking-widest rounded-md border border-slate-400 focus:outline-none"
+                           type="number" id="age" placeholder="Tahun">
+                    <label class="text-green-800 text-sm text-center mb-2 tracking-wider" for="height">Tinggi Badan (cm)</label>
+                    <input class="xl:w-64 lg:w-54 md:w-44 sm:w-24 xs:w-18 h-10 bg-transparent text-white placeholder:italic pl-6 placeholder:text-xs placeholder:tracking-widest rounded-md border border-slate-400 focus:outline-none"
+                           type="number" id="height" placeholder="CM">
+                    <label class="text-green-800 text-sm text-center mb-2 tracking-wider" for="weight">Berat Badan (kg)</label>
+                    <input class="xl:w-64 lg:w-54 md:w-44 sm:w-24 xs:w-18 h-10 bg-transparent text-white placeholder:italic pl-6 placeholder:text-xs placeholder:tracking-widest rounded-md border border-slate-400 focus:outline-none"
+                           type="number" id="weight" placeholder="KG">
+                    <button onclick="hitungBMI()"
+                            class="text-sm pb-2 font-bold pt-5 md:pt-6 font-serif text-green-600 hover:text-green-800 hover:scale-110">Hitung
+                    </button>
+                    <div class="mt-4 text-center text-xs font-light" id="result-container">
+                        <!-- BMI result and category will be displayed here -->
                     </div>
-                    <h3 class="text-left font-bold text-sm py-2 px-6 text-green-800">Cek Kebutuhan Energi</h3>
-                    <p class="px-6 leading-5 pb-3 text-justify text-xs">Hitung kebutuhan harian gizi untuk perencanaan
-                        makan sehatmu dengan cepat</p>
-                    <a class="text-xs tracking-widest text-green-800 hover:text-yellow-800 justify-start items-start hover:scale-110 hover:px-8 flex flex-col px-6"
-                        href="html/login.html">Coba Sekarang</a>
-                </div>
-                <div
-                    class="h-80 w-64 rounded-2xl shadow-lg shadow-gray-300 hover:scale-110 transition-all ease-in-out duration-500 hover:shadow-2xl hover:shadow-green-800">
-                    <div class="h-3/6 rounded-2xl">
-                        <img class="h-full w-full rounded-t-2xl" src="../img/zatbahan.jpg" alt="">
-                    </div>
-                    <h3 class="text-left font-bold text-sm py-2 px-6 text-green-800">Zat Gizi Bahan - TKPI 2020</h3>
-                    <p class="px-6 leading-5 pb-3 text-justify text-xs">Hitung zat gizi suatu bahan sesuai panduan
-                        terbaru TKPI 2020 secara cepat</p>
-                    <a class="text-xs tracking-widest text-green-800 hover:text-yellow-800 justify-start items-start hover:scale-110 hover:px-8 flex flex-col px-6"
-                        href="html/login.html">Coba Sekarang</a>
-                </div>
-                <div
-                    class="h-80 w-64 rounded-2xl shadow-lg shadow-gray-300 hover:scale-110 transition-all ease-in-out duration-500 hover:shadow-2xl hover:shadow-green-800">
-                    <div class="h-3/6 rounded-2xl">
-                        <img class="h-full w-full rounded-t-2xl" src="../img/giziharian.jpg" alt="">
-                    </div>
-                    <h3 class="text-left font-bold text-sm py-2 px-6 text-green-800">Rencana Gizi Harian</h3>
-                    <p class="px-6 leading-5 pb-3 text-justify text-xs">Memungkinkan Anda menyusunan makanan sehari-hari
-                        sesuai kebutuhan tubuh</p>
-                    <a class="text-xs tracking-widest text-green-800 hover:text-yellow-800 justify-start items-start hover:scale-110 hover:px-8 flex flex-col px-6"
-                        href="html/login.html">Coba Sekarang</a>
-                </div>
-            </div>
+                    <div class="text-center text-sm text-red-500 font-medium w-full translate-y-6" id="error-message"></div>
 
+                </div>
+            </div>
         </main>
 
+        <script>
+            function hitungBMI() {
+                // Get input values
+                const gender = document.getElementById("gender").value;
+                const age = parseInt(document.getElementById("age").value);
+                const height = parseFloat(document.getElementById("height").value);
+                const weight = parseFloat(document.getElementById("weight").value);
+        
+                // Check if inputs are valid
+                if (isNaN(age) || isNaN(height) || isNaN(weight) || age <= 0 || height <= 0 || weight <= 0) {
+                    document.getElementById("error-message").innerText = "Mohon isi semua kolom dengan angka yang valid.";
+                    return;
+                } else {
+                    document.getElementById("error-message").innerText = "";
+                }
+        
+                // Calculate BMI
+                const heightInMeters = height / 100;
+                const bmi = weight / (heightInMeters * heightInMeters);
+        
+                // Categorize BMI
+                let category;
+                if (bmi < 18.5) {
+                    category = "Berat badan kurang (Underweight)";
+                } else if (bmi >= 18.5 && bmi <= 24.9) {
+                    category = "Berat badan normal (Normal weight)";
+                } else if (bmi >= 25 && bmi <= 29.9) {
+                    category = "Berat badan berlebih (Overweight)";
+                } else {
+                    category = "Obesitas (Obesity)";
+                }
+        
+                // Display result
+                const resultContainer = document.getElementById("result-container");
+                resultContainer.innerHTML = `<p class="text-green-800 font-semibold">Hasil BMI: ${bmi.toFixed(2)}</p>
+                                             <p class="text-green-800 font-semibold">${category}</p>`;
+            }
+        </script>
     </section>
-    <section class="bg-white">
-        <main class="h-full w-screen flex flex-col  items-center md:pl-80 pt-16 md:pt-0">
-            <div class="flex flex-col items-center gap-6">
-                <H1 class="font-extrabold text-xl text-green-800 tracking-wider">Membership Premium</H1>
-                <p class="text-sm px-12 text-justify tracking-wider leading-7">Nutrical kini hanya dapat diakses melalui
-                    <span class="text-green-800">keanggotaan premium</span>. Dengan dukungan keanggotaan, pengembang
-                    dapat terus mengembangkan web dan
-                    meningkatkan pelayanan maupun inovasi. Bergabunglah dengan pilihan paket yang beragam dan sesuai
-                    dengan pelajar.
-                </p>
-            </div>
-            <div class="h-30 w-72 pt-10 flex flex-col justify-center px-1 gap-4">
-                <a href="html/login.html"
-                    class="bg-black h-20 rounded-lg flex justify-center hover:scale-110 hover:transition-all hover:ease-in-out hover:duration-500 w-72">
-                    <img class="w-full object-cover h-ful opacity-60 rounded-lg" src="../img/paket1.jpg" alt="">
-                    <h2 class="text-sm font-semibold tracking-widest absolute text-white translate-y-2 translate-x-3">
-                        Weekly</h2>
-                    <p class="text-xs font-normal tracking-widest absolute text-white translate-y-6 -translate-x-24">
-                        <del>17K / Week</del>
-                    </p>
-                    <p class=" text-lg font-normal tracking-widest absolute text-white translate-y-7 translate-x-3">
-                        12K / Week</p>
-                    <p
-                        class="text-sm text-white bg-red-800 absolute translate-x-32 px-4 rounded-sm -translate-y-2 tracking-widest py-2 text-center rotate-45">
-                        Off 30%</p>
-
-
-                </a>
-                <a href="html/login.html"
-                    class="bg-black h-20 rounded-lg flex justify-center hover:scale-110 hover:transition-all hover:ease-in-out hover:duration-500 w-72">
-                    <img class="w-full object-cover h-ful opacity-60 rounded-lg" src="../img/paket1.jpg" alt="">
-                    <h2 class="text-sm font-semibold tracking-widest absolute text-white translate-y-2 translate-x-3">
-                        Monthly</h2>
-                    <p class="text-xs font-normal tracking-widest absolute text-white translate-y-6 -translate-x-24">
-                        <del>70K / Month</del>
-                    </p>
-                    <p class=" text-lg font-normal tracking-widest absolute text-white translate-y-7 translate-x-3">
-                        49K / Month</p>
-                    <p
-                        class="text-sm text-white bg-red-800 absolute translate-x-32 px-4 rounded-sm -translate-y-2 tracking-widest py-2 text-center rotate-45">
-                        Off 30%</p>
-
-
-                </a>
-                <a href="html/login.html"
-                    class="bg-black h-20 rounded-lg flex justify-center hover:scale-110 hover:transition-all hover:ease-in-out hover:duration-500 w-72">
-                    <img class="w-full object-cover h-ful opacity-60 rounded-lg" src="../img/paket1.jpg" alt="">
-                    <h2 class="text-sm font-semibold tracking-widest absolute text-white translate-y-2 translate-x-3">
-                        3rd Monthly</h2>
-                    <p class="text-xs font-normal tracking-widest absolute text-white translate-y-6 -translate-x-20">
-                        <del>190k / 3rd Month</del>
-                    </p>
-                    <p class=" text-lg font-normal tracking-widest absolute text-white translate-y-10 translate-x-3">
-                        133k / 3rd Month</p>
-                    <p
-                        class="text-sm text-white bg-red-800 absolute translate-x-32 px-4 rounded-sm -translate-y-2 tracking-widest py-2 text-center rotate-45">
-                        Off 30%</p>
-
-
-                </a>
-
-            </div>
-
-        </main>
-    </section>
-    <footer
+    <!-- <footer
         class="text-slate-300 text-xs absolute flex flex-col translate-y-10 justify-center items-center text-center backdrop-blur-sm w-screen h-[6.4%] leading-5">
         <p>This website was developed by Dimas Fiebry</p>
         <p>Copyright ©2023 All Rights Reserved</p>
-    </footer>
+    </footer> -->
 
-    <script src="../js/dataTest.js"></script>
-    <script src="../js/login.js"></script>
+
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 
