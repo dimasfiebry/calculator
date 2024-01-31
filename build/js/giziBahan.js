@@ -1,6 +1,6 @@
 var dataBahan = {
   "Beras giling, mentah": {
-    Air: 12.0,
+    Air: 12,
     Energi: 357,
     Protein: 8.4,
     Lemak: 1.7,
@@ -2557,55 +2557,58 @@ function tampilkanDetailBahan(namaBahan) {
   var detailVitaminCElemen = document.getElementById("detailVitC");
   var detailBDDElemen = document.getElementById("detailBDD");
 
+
+  var beratInput = document.getElementById("beratBahanInput").value;
+
   // Cek apakah bahan tersebut ada dalam dataBahan
   if (dataBahan.hasOwnProperty(namaBahan)) {
     // Dapatkan nilai Air dan Energi dari objek dataBahan
-    var nilaiAir = dataBahan[namaBahan]["Air"];
-    var nilaiEnergi = dataBahan[namaBahan]["Energi"];
-    var nilaiProtein = dataBahan[namaBahan]["Protein"];
-    var nilaiLemak = dataBahan[namaBahan]["Lemak"];
-    var nilaiKarbohidrat = dataBahan[namaBahan]["Karbohidrat"];
-    var nilaiSerat = dataBahan[namaBahan]["Serat"];
-    var nilaiAbu = dataBahan[namaBahan]["Abu"];
-    var nilaiKalsium = dataBahan[namaBahan]["Kalsium"];
-    var nilaiFosfor = dataBahan[namaBahan]["Fosfor"];
-    var nilaiBesi = dataBahan[namaBahan]["Besi"];
-    var nilaiNatrium = dataBahan[namaBahan]["Natrium"];
-    var nilaiKalium = dataBahan[namaBahan]["Kalium"];
-    var nilaiTembaga = dataBahan[namaBahan]["Tembaga"];
-    var nilaiSeng = dataBahan[namaBahan]["Seng"];
-    var nilaiRetinol = dataBahan[namaBahan]["Retinol"];
-    var nilaiBKaroten = dataBahan[namaBahan]["B-Karoten"];
-    var nilaiKarotenTotal = dataBahan[namaBahan]["Karoten Total"];
-    var nilaiThiamin = dataBahan[namaBahan]["Thiamin"];
-    var nilaiRiboflavin = dataBahan[namaBahan]["Riboflavin"];
-    var nilaiNiasin = dataBahan[namaBahan]["Niasin"];
-    var nilaiVitaminC = dataBahan[namaBahan]["Vitamin-C"];
-    var nilaiBDD = dataBahan[namaBahan]["BDD"];
+    var nilaiAir = (beratInput / 100) * dataBahan[namaBahan]["Air"];
+    var nilaiEnergi = (beratInput / 100) * dataBahan[namaBahan]["Energi"];
+    var nilaiProtein = (beratInput / 100) * dataBahan[namaBahan]["Protein"];
+    var nilaiLemak = (beratInput / 100) * dataBahan[namaBahan]["Lemak"];
+    var nilaiKarbohidrat = (beratInput / 100) * dataBahan[namaBahan]["Karbohidrat"];
+    var nilaiSerat = (beratInput / 100) * dataBahan[namaBahan]["Serat"];
+    var nilaiAbu = (beratInput / 100) * dataBahan[namaBahan]["Abu"];
+    var nilaiKalsium = (beratInput / 100) * dataBahan[namaBahan]["Kalsium"];
+    var nilaiFosfor = (beratInput / 100) * dataBahan[namaBahan]["Fosfor"];
+    var nilaiBesi = (beratInput / 100) * dataBahan[namaBahan]["Besi"];
+    var nilaiNatrium = (beratInput / 100) * dataBahan[namaBahan]["Natrium"];
+    var nilaiKalium = (beratInput / 100) * dataBahan[namaBahan]["Kalium"];
+    var nilaiTembaga = (beratInput / 100) * dataBahan[namaBahan]["Tembaga"];
+    var nilaiSeng = (beratInput / 100) * dataBahan[namaBahan]["Seng"];
+    var nilaiRetinol = (beratInput / 100) * dataBahan[namaBahan]["Retinol"];
+    var nilaiBKaroten = (beratInput / 100) * dataBahan[namaBahan]["B-Karoten"];
+    var nilaiKarotenTotal = (beratInput / 100) * dataBahan[namaBahan]["Karoten Total"];
+    var nilaiThiamin = (beratInput / 100) * dataBahan[namaBahan]["Thiamin"];
+    var nilaiRiboflavin = (beratInput / 100) * dataBahan[namaBahan]["Riboflavin"];
+    var nilaiNiasin = (beratInput / 100) * dataBahan[namaBahan]["Niasin"];
+    var nilaiVitaminC = (beratInput / 100) * dataBahan[namaBahan]["Vitamin-C"];
+    var nilaiBDD = (beratInput / 100) * dataBahan[namaBahan]["BDD"];
 
     // Tampilkan nilai Air dan Energi di dalam elemen HTML
-    detailAirElemen.textContent = nilaiAir;
-    detailEnergiElemen.textContent = nilaiEnergi;
-    detailProteinElemen.textContent = nilaiProtein;
-    detailLemakElemen.textContent = nilaiLemak;
-    detailKarbohidratElemen.textContent = nilaiKarbohidrat;
-    detailSeratElemen.textContent = nilaiSerat;
-    detailAbuElemen.textContent = nilaiAbu;
-    detailKalsiumElemen.textContent = nilaiKalsium;
-    detailFosforElemen.textContent = nilaiFosfor;
-    detailBesiElemen.textContent = nilaiBesi;
-    detailNatriumElemen.textContent = nilaiNatrium;
-    detailKaliumElemen.textContent = nilaiKalium;
-    detailTembagaElemen.textContent = nilaiTembaga;
-    detailSengElemen.textContent = nilaiSeng;
-    detailRetinolElemen.textContent = nilaiRetinol;
-    detailBKarotenElemen.textContent = nilaiBKaroten;
-    detailKarotenTotalElemen.textContent = nilaiKarotenTotal;
-    detailThiaminElemen.textContent = nilaiThiamin;
-    detailRiboflavinElemen.textContent = nilaiRiboflavin;
-    detailNiasinElemen.textContent = nilaiNiasin;
-    detailVitaminCElemen.textContent = nilaiVitaminC;
-    detailBDDElemen.textContent = nilaiBDD;
+    detailAirElemen.textContent = nilaiAir.toFixed(2);
+    detailEnergiElemen.textContent = nilaiEnergi.toFixed(2);
+    detailProteinElemen.textContent = nilaiProtein.toFixed(2);
+    detailLemakElemen.textContent = nilaiLemak.toFixed(2);
+    detailKarbohidratElemen.textContent = nilaiKarbohidrat.toFixed(2);
+    detailSeratElemen.textContent = nilaiSerat.toFixed(2);
+    detailAbuElemen.textContent = nilaiAbu.toFixed(2);
+    detailKalsiumElemen.textContent = nilaiKalsium.toFixed(2);
+    detailFosforElemen.textContent = nilaiFosfor.toFixed(2);
+    detailBesiElemen.textContent = nilaiBesi.toFixed(2);
+    detailNatriumElemen.textContent = nilaiNatrium.toFixed(2);
+    detailKaliumElemen.textContent = nilaiKalium.toFixed(2);
+    detailTembagaElemen.textContent = nilaiTembaga.toFixed(2);
+    detailSengElemen.textContent = nilaiSeng.toFixed(2);
+    detailRetinolElemen.textContent = nilaiRetinol.toFixed(2);
+    detailBKarotenElemen.textContent = nilaiBKaroten.toFixed(2);
+    detailKarotenTotalElemen.textContent = nilaiKarotenTotal.toFixed(2);
+    detailThiaminElemen.textContent = nilaiThiamin.toFixed(2);
+    detailRiboflavinElemen.textContent = nilaiRiboflavin.toFixed(2);
+    detailNiasinElemen.textContent = nilaiNiasin.toFixed(2);
+    detailVitaminCElemen.textContent = nilaiVitaminC.toFixed(2);
+    detailBDDElemen.textContent = nilaiBDD.toFixed(2);
   } else {
     // Jika bahan tidak ditemukan, berikan pesan kesalahan
     detailAirElemen.textContent = "-";

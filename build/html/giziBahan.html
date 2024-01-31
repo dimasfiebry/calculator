@@ -248,7 +248,13 @@
                     <input type="text" id="namaBahanInput" placeholder="Masukkan nama bahan" list="namaBahanOptions"
                         class="w-48 optional:text-gray-400 optional:text-xs bg-transparent border border-gray-400 hover:border-gray-500 px-4 py-2 rounded leading-tight focus:outline-none">
                     <datalist id="namaBahanOptions"></datalist>
-                    <button onclick="cariBahan()" class="text-sm pb-2 font-bold pt-5 md:pt-6 font-serif text-green-600 hover:text-green-800 hover:scale-110">Cari</button>
+                    <!-- Tambahkan input untuk berat bahan -->
+                    <label class="text-green-800 text-sm text-center tracking-wider" for="beratBahanInput">Berat
+                        (gram)</label>
+                    <input type="number" id="beratBahanInput" placeholder="Masukkan berat bahan"
+                        class="w-48 optional:text-gray-400 optional:text-xs bg-transparent border border-gray-400 hover:border-gray-500 px-4 py-2 rounded leading-tight focus:outline-none">
+                    <button onclick="cariBahan()"
+                        class="text-sm pb-2 font-bold pt-5 md:pt-6 font-serif text-green-600 hover:text-green-800 hover:scale-110">Cari</button>
                 </div>
 
 
@@ -256,7 +262,7 @@
                 </div>
 
 
-                
+
                 <div class="flex flex-row justify-center items-center gap-16">
                     <div class="flex flex-col justify-center items-center w-12">
                         <label class="text-green-800 text-sm text-center mb-2 tracking-wider" for="age">Air</label>
@@ -278,7 +284,7 @@
                     </div>
                 </div>
                 <!-- Tambahkan div untuk zat gizi lainnya dengan ID yang sesuai -->
-                
+
                 <div class="flex flex-row justify-center items-center gap-16">
                     <div class="flex flex-col justify-center items-center w-12">
                         <label class="text-green-800 text-sm text-center mb-2 tracking-wider" for="age">KH</label>
@@ -300,7 +306,7 @@
                     </div>
                 </div>
                 <!-- Tambahkan div untuk zat gizi lainnya dengan ID yang sesuai -->
-                
+
                 <div class="flex flex-row justify-center items-center gap-16">
                     <div class="flex flex-col justify-center items-center w-12">
                         <label class="text-green-800 text-sm text-center mb-2 tracking-wider" for="age">Fosfor</label>
@@ -322,7 +328,7 @@
                     </div>
                 </div>
                 <!-- Tambahkan div untuk zat gizi lainnya dengan ID yang sesuai -->
-                
+
                 <div class="flex flex-row justify-center items-center gap-16">
                     <div class="flex flex-col justify-center items-center w-12">
                         <label class="text-green-800 text-sm text-center mb-2 tracking-wider" for="age">Tembaga</label>
@@ -344,10 +350,11 @@
                     </div>
                 </div>
                 <!-- Tambahkan div untuk zat gizi lainnya dengan ID yang sesuai -->
-                
+
                 <div class="flex flex-row justify-center items-center gap-16">
                     <div class="flex flex-col justify-center items-center w-12">
-                        <label class="text-green-800 text-sm text-center mb-2 tracking-wider" for="age">Kar - Total</label>
+                        <label class="text-green-800 text-sm text-center mb-2 tracking-wider" for="age">Kar -
+                            Total</label>
                         <div id="detailKarTotal" class="px-8 border border-slate-400"></div>
                     </div>
                     <div class="flex flex-col justify-center items-center w-12">
@@ -355,10 +362,11 @@
                         <div id="detailThiamin" class="px-8 border border-slate-400"></div>
                     </div>
                 </div>
-                
+
                 <div class="flex flex-row justify-center items-center gap-16">
                     <div class="flex flex-col justify-center items-center w-12">
-                        <label class="text-green-800 text-sm text-center mb-2 tracking-wider" for="age">Riboflavin</label>
+                        <label class="text-green-800 text-sm text-center mb-2 tracking-wider"
+                            for="age">Riboflavin</label>
                         <div id="detailRiboflavin" class="px-8 border border-slate-400"></div>
                     </div>
                     <div class="flex flex-col justify-center items-center w-12">
@@ -367,7 +375,7 @@
                     </div>
                 </div>
                 <!-- Tambahkan div untuk zat gizi lainnya dengan ID yang sesuai -->
-                
+
                 <div class="flex flex-row justify-center items-center gap-16">
                     <div class="flex flex-col justify-center items-center w-12">
                         <label class="text-green-800 text-sm text-center mb-2 tracking-wider" for="age">Vit - C</label>
@@ -379,7 +387,7 @@
                     </div>
                 </div>
                 <!-- Tambahkan div untuk zat gizi lainnya dengan ID yang sesuai -->
-                
+
 
             </div>
             </div>
