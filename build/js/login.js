@@ -1,37 +1,70 @@
-
-const dataNamaKodeAkses = [
-    { nama: "rizka", kodeAkses: "800978" },
-    { nama: "adam", kodeAkses: "123456" },
-    { nama: "lisa", kodeAkses: "987654" },
-    { nama: "ali", kodeAkses: "111222" },
-    { nama: "sara", kodeAkses: "555666" },
-    { nama: "rudi", kodeAkses: "777888" },
-    { nama: "nina", kodeAkses: "999000" },
-    { nama: "budi", kodeAkses: "456789" },
-    { nama: "dina", kodeAkses: "135790" },
-    { nama: "fajar", kodeAkses: "246801" }
+const dxy = [
+    { x: "rizka", y: "45227684" },
+    { x: "adam", y: "87364726" },
+    { x: "yhoga", y: "12345678" },
+    { x: "haha", y: "72625188" },
+    { x: "hihi", y: "11627282" },
+    { x: "hehe", y: "44723826" },
+    { x: "arip", y: "66445522" },
+    { x: "meh", y: "22551144" },
+    { x: "kero", y: "66445533" },
 ];
 
+function ap(y) {
+    let b = y.slice(-4);
+    let dp = y.slice(0, 4);
+    let an = b + dp;
+    let bp = parseInt(an) + 31;
 
-function cekKodeAkses() {
-    var namaInput = document.getElementById('nama').value;
-    var kodeAksesInput = document.getElementById('kodeAkses').value;
+    let cp = bp.toString().slice(-3);
+    let ep = bp.toString().slice(0, 5);
+    let fp = cp + ep;
 
-    // Cek apakah nama dan kode akses benar
-    var userValid = dataNamaKodeAkses.find(function (user) {
-        return user.nama === namaInput && user.kodeAkses === kodeAksesInput;
-    });
 
-    if (userValid) {
-        // Jika benar, lanjut ke halaman index.html
-        window.location.href = "index2.html";
+    let gp = 0;
+
+    if (parseInt(fp) % 2 === 0) {
+        gp = parseInt(fp) / 2;
     } else {
-        // Jika salah, tampilkan pesan error
-        tampilkanPesanError("Nama atau kode akses tidak tersedia.");
+        fp = parseInt(fp) - 1;
+        gp = fp / 2;
     }
-}
+    
 
+    let hp = gp - 24;
+    let ip = hp * 2;
+    let np = ip + 0;
+    return np;
+
+    // console.log(np);
+}
+for (let i = 0; i < dxy.length; i++) {
+    let u = dxy[i];
+    u.y = ap(u.y);
+  }
+
+function ceky() {
+    var xi = document.getElementById('x').value;
+    var yi = document.getElementById('y').value;
+  
+  
+    var uValid = dxy.find((item) => {
+        return item.x === xi && item.y.toString() === yi;
+      });
+    
+      if (uValid) {
+        return window.location.href = 'index2.html';
+      } else {
+        return tampilkanPesanError('Username atau kode akses tidak tersedia.');
+      }
+  
+    
+  }
 function tampilkanPesanError(message) {
     var errorMessageElement = document.getElementById('error-message');
     errorMessageElement.innerText = message;
+}
+function tampilkanPesan(message) {
+    var MessageElement = document.getElementById('message');
+    MessageElement.innerText = message;
 }

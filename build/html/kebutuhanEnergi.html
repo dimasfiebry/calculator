@@ -235,78 +235,119 @@
             </ul>
         </div>
     </nav>
-    
-    <section class="bg-white">
-        <main class="flex flex-col justify-center items-center h-full">
-            <div class="backdrop-filter backdrop-blur-sm bg-opacity-20 mt-20 bg-green-900 w-72 md:w-72 lg:w-96 border-[0.8px] h-full py-10 border-slate-100 rounded-xl pt-10">
-                <h1 class="text-center text-xl font-extrabold text-green-800 border-b-2 pb-6 font-sans tracking-widest">
-                    BMI</h1>
+
+    <section class="bg-white h-[120vh]">
+        <main class="flex flex-col justify-center items-center">
+            <div
+                class="backdrop-filter backdrop-blur-sm bg-opacity-20 mt-20 bg-green-900 w-72 md:w-72 lg:w-96 border-[0.8px] h-full py-10 border-slate-100 rounded-xl pt-10">
+                <h1 class="text-center text-xl font-extrabold text-green-800 border-b-2 pb-6 font-sans tracking-wide">
+                    Kebutuhan Energi</h1>
                 <div class="flex flex-col items-center space-y-2 pt-4">
                     <label class="text-green-800 text-sm text-center tracking-wider" for="gender">Gender</label>
                     <select id="gender" name="gender"
-                            class="block appearance-none w-48 optional:text-gray-400 optional:text-xs bg-transparent border border-gray-400 hover:border-gray-500 px-4 py-2 rounded leading-tight focus:outline-none">
+                        class="block appearance-none w-48 optional:text-gray-400 optional:text-xs bg-transparent border border-gray-400 hover:border-gray-500 px-4 py-2 rounded leading-tight focus:outline-none">
                         <option value="male">Laki-laki</option>
                         <option value="female">Perempuan</option>
                     </select>
-                    <label class="text-green-800 text-sm text-center mb-2 tracking-wider" for="age">Usia</label>
-                    <input class="xl:w-64 lg:w-54 md:w-44 sm:w-24 xs:w-18 h-10 bg-transparent text-white placeholder:italic pl-6 placeholder:text-xs placeholder:tracking-widest rounded-md border border-slate-400 focus:outline-none"
-                           type="number" id="age" placeholder="Tahun">
-                    <label class="text-green-800 text-sm text-center mb-2 tracking-wider" for="height">Tinggi Badan (cm)</label>
-                    <input class="xl:w-64 lg:w-54 md:w-44 sm:w-24 xs:w-18 h-10 bg-transparent text-white placeholder:italic pl-6 placeholder:text-xs placeholder:tracking-widest rounded-md border border-slate-400 focus:outline-none"
-                           type="number" id="height" placeholder="CM">
-                    <label class="text-green-800 text-sm text-center mb-2 tracking-wider" for="weight">Berat Badan (kg)</label>
-                    <input class="xl:w-64 lg:w-54 md:w-44 sm:w-24 xs:w-18 h-10 bg-transparent text-white placeholder:italic pl-6 placeholder:text-xs placeholder:tracking-widest rounded-md border border-slate-400 focus:outline-none"
-                           type="number" id="weight" placeholder="KG">
-                    <button onclick="hitungBMI()"
-                            class="text-sm pb-2 font-bold pt-5 md:pt-6 font-serif text-green-600 hover:text-green-800 hover:scale-110">Hitung
-                    </button>
-                    <div class="mt-4 text-center text-xs font-light" id="result-container">
-                        <!-- BMI result and category will be displayed here -->
-                    </div>
-                    <div class="text-center text-sm text-red-500 font-medium w-full translate-y-6" id="error-message"></div>
 
+                    <label class="text-green-800 text-sm text-center mb-2 tracking-wider" for="age">Usia</label>
+                    <input
+                        class="xl:w-64 lg:w-54 md:w-44 sm:w-24 xs:w-18 h-10 bg-transparent text-white placeholder:italic pl-6 placeholder:text-xs placeholder:tracking-widest rounded-md border border-slate-400 focus:outline-none"
+                        type="number" id="age" placeholder="Tahun">
+
+                    <label class="text-green-800 text-sm text-center mb-2 tracking-wider" for="height">Tinggi Badan
+                        (cm)</label>
+                    <input
+                        class="xl:w-64 lg:w-54 md:w-44 sm:w-24 xs:w-18 h-10 bg-transparent text-white placeholder:italic pl-6 placeholder:text-xs placeholder:tracking-widest rounded-md border border-slate-400 focus:outline-none"
+                        type="number" id="height" placeholder="CM">
+
+                    <label class="text-green-800 text-sm text-center mb-2 tracking-wider" for="weight">Berat Badan
+                        (kg)</label>
+                    <input
+                        class="xl:w-64 lg:w-54 md:w-44 sm:w-24 xs:w-18 h-10 bg-transparent text-white placeholder:italic pl-6 placeholder:text-xs placeholder:tracking-widest rounded-md border border-slate-400 focus:outline-none"
+                        type="number" id="weight" placeholder="KG">
+
+                    <label class="text-green-800 text-sm text-center mb-2 tracking-wider"
+                        for="activity">Aktivitas</label>
+                    <select id="activity" name="activity"
+                        class="block appearance-none w-48 optional:text-gray-400 optional:text-xs bg-transparent border border-gray-400 hover:border-gray-500 px-4 py-2 rounded leading-tight focus:outline-none">
+                        <option value="ringan">Aktivitas ringan 1-2 kali seminggu</option>
+                        <option value="sedang">Aktivitas sedang 3-4 kali seminggu</option>
+                        <option value="berat">Aktivitas intens 5-7 kali seminggu</option>
+                        <option value="sangatBerat">Aktivitas sangat intens (dua kali sehari atau latihan ekstra berat)
+                        </option>
+                    </select>
+
+
+
+                    <button onclick="hitungTEE()"
+                        class="text-sm pb-2 font-bold pt-5 md:pt-6 font-serif text-green-600 hover:text-green-800 hover:scale-110">Hitung</button>
+
+                    <div class="mt-4 text-center text-xs font-light" id="result-container">
+                        <div id="bmr-result"></div>
+                        <div id="tee-result"></div>
+                    </div>
+
+                    <div class="text-center text-sm text-red-500 font-medium w-full translate-y-6" id="error-message">
+                    </div>
                 </div>
             </div>
         </main>
 
         <script>
-            function hitungBMI() {
-                // Get input values
-                const gender = document.getElementById("gender").value;
-                const age = parseInt(document.getElementById("age").value);
-                const height = parseFloat(document.getElementById("height").value);
-                const weight = parseFloat(document.getElementById("weight").value);
-        
-                // Check if inputs are valid
-                if (isNaN(age) || isNaN(height) || isNaN(weight) || age <= 0 || height <= 0 || weight <= 0) {
-                    document.getElementById("error-message").innerText = "Mohon isi semua kolom dengan angka yang valid.";
+            function hitungTEE() {
+                // Ambil nilai dari input
+                var gender = document.getElementById('gender').value;
+                var age = parseFloat(document.getElementById('age').value);
+                var height = parseFloat(document.getElementById('height').value);
+                var weight = parseFloat(document.getElementById('weight').value);
+                var activity = document.getElementById('activity').value;
+
+                // Validasi input
+                if (isNaN(age) || isNaN(height) || isNaN(weight)) {
+                    document.getElementById('error-message').innerText = 'Silakan isi semua kolom dengan angka.';
                     return;
                 } else {
-                    document.getElementById("error-message").innerText = "";
+                    document.getElementById('error-message').innerText = '';
                 }
-        
-                // Calculate BMI
-                const heightInMeters = height / 100;
-                const bmi = weight / (heightInMeters * heightInMeters);
-        
-                // Categorize BMI
-                let category;
-                if (bmi < 18.5) {
-                    category = "Berat badan kurang (Underweight)";
-                } else if (bmi >= 18.5 && bmi <= 24.9) {
-                    category = "Berat badan normal (Normal weight)";
-                } else if (bmi >= 25 && bmi <= 29.9) {
-                    category = "Berat badan berlebih (Overweight)";
-                } else {
-                    category = "Obesitas (Obesity)";
+
+                // Hitung BMR berdasarkan rumus Harris-Benedict sesuai jenis kelamin
+                var bmr;
+                if (gender === 'male') {
+                    bmr = 66.5 + (13.7 * weight) + (5 * height) - (6.8 * age);
+                } else if (gender === 'female') {
+                    bmr = 655 + (9.6 * weight) + (1.8 * height) - (4.7 * age);
                 }
-        
-                // Display result
-                const resultContainer = document.getElementById("result-container");
-                resultContainer.innerHTML = `<p class="text-green-800 font-semibold">Hasil BMI: ${bmi.toFixed(2)}</p>
-                                             <p class="text-green-800 font-semibold">${category}</p>`;
+
+                // Hitung TEE berdasarkan tingkat aktivitas fisik
+                var pal;
+                switch (activity) {
+                    case 'ringan':
+                        pal = 1.375;
+                        break;
+                    case 'sedang':
+                        pal = 1.55;
+                        break;
+                    case 'berat':
+                        pal = 1.725;
+                        break;
+                    case 'sangatBerat':
+                        pal = 1.9;
+                        break;
+                    default:
+                        pal = 1.55; // Default PAL untuk aktivitas sedang
+                }
+
+                var tee = bmr * pal;
+
+                // Tampilkan hasil BMR
+                document.getElementById('bmr-result').innerText = 'BMR Anda: ' + bmr.toFixed(2) + ' kcal/hari';
+
+                // Tampilkan hasil TEE
+                document.getElementById('tee-result').innerText = 'Total Energy Expenditure Anda: ' + tee.toFixed(2) + ' kcal/hari';
             }
         </script>
+
     </section>
     <!-- <footer
         class="text-slate-300 text-xs absolute flex flex-col translate-y-10 justify-center items-center text-center backdrop-blur-sm w-screen h-[6.4%] leading-5">
