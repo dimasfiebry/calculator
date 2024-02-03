@@ -2533,322 +2533,370 @@ for (var bahan in dataBahan) {
   namaBahanOptions.appendChild(option);
 }
 
-  
+function tambahBahan() {
+  var namaBahanInput = document.getElementById("namaBahanInput");
+  var beratBahanInput = document.getElementById("beratBahanInput");
 
-  function tambahBahan() {
-    var namaBahanInput = document.getElementById("namaBahanInput");
-    var beratBahanInput = document.getElementById("beratBahanInput");
-  
-    var namaBahan = namaBahanInput.value;
-    var beratBahan = beratBahanInput.value;
-  
-    if (namaBahan === "" || beratBahan === "") {
-      alert("Mohon isi nama bahan dan berat bahan.");
-      return;
-    }
-  
-    var newBahan = document.createElement("div");
-    newBahan.className =
-      "flex flex-row items-center space-y-2 pt-4 gap-4 justify-center added-ingredient";
-  
-    var inputNamaBahan = document.createElement("input");
-    inputNamaBahan.type = "text";
-    inputNamaBahan.value = namaBahan;
-    inputNamaBahan.disabled = true;
-    inputNamaBahan.className =
-      "w-44 optional:text-gray-800 optional:text-xs bg-transparent border border-gray-400 hover:border-gray-500 px-4 py-2 translate-y-1 rounded leading-tight focus:outline-none";
-  
-    var inputBeratBahan = document.createElement("input");
-    inputBeratBahan.type = "number";
-    inputBeratBahan.value = beratBahan;
-    inputBeratBahan.disabled = true;
-    inputBeratBahan.className =
-      "w-16 optional:text-gray-800 optional:text-xs bg-transparent border border-gray-400 hover:border-gray-500 px-1 py-2 rounded leading-tight focus:outline-none";
-  
-    newBahan.appendChild(inputNamaBahan);
-    newBahan.appendChild(inputBeratBahan);
-  
-    menuMakanDiv.appendChild(newBahan);
-  
-    // Tambahkan data ke dalam array
-    addedIngredientsArray.push({
-      nama: namaBahan,
-      berat: beratBahan
-    });
-  
-    namaBahanInput.value = "";
-    beratBahanInput.value = "";
+  var namaBahan = namaBahanInput.value;
+  var beratBahan = beratBahanInput.value;
+
+  if (namaBahan === "" || beratBahan === "") {
+    alert("Mohon isi nama bahan dan berat bahan.");
+    return;
   }
+
+  var newBahan = document.createElement("div");
+  newBahan.className =
+    "flex flex-row items-center space-y-2 pt-4 justify-center added-ingredient";
+
+  var inputNamaBahan = document.createElement("input");
+  inputNamaBahan.type = "text";
+  inputNamaBahan.value = namaBahan;
+  inputNamaBahan.disabled = true;
+  inputNamaBahan.className =
+    "w-44 optional:text-gray-800 optional:text-xs bg-transparent border border-gray-400 hover:border-gray-500 px-4 mr-5 py-2 translate-y-1 rounded leading-tight focus:outline-none";
+
+  var inputBeratBahan = document.createElement("input");
+  inputBeratBahan.type = "text";
+  inputBeratBahan.value = beratBahan;
+  inputBeratBahan.disabled = true;
+  inputBeratBahan.className =
+    "w-10 optional:text-gray-800 optional:text-xs bg-transparent text-center border border-gray-400 hover:border-gray-500 px-1 py-2 rounded leading-tight focus:outline-none";
+
+
+    var minusButton = document.createElement("button");
+  minusButton.textContent = "-";
+  minusButton.className =
+    "text-xl font-bold w-10 h-8 pb-1 text-orange-900 text-center hover:text-red-700 cursor-pointer";
+  minusButton.addEventListener("click", function () {
+    // Panggil fungsi hapusBahan untuk menghapus bahan dari array dan memperbarui tampilan
+    hapusBahan(namaBahan, newBahan);
+  });
+
+
+  newBahan.appendChild(inputNamaBahan);
+  newBahan.appendChild(inputBeratBahan);
+  newBahan.appendChild(minusButton);
+
+  menuMakanDiv.appendChild(newBahan);
+
+  // Tambahkan data ke dalam array
+  addedIngredientsArray.push({
+    nama: namaBahan,
+    berat: beratBahan,
+  });
+
+  namaBahanInput.value = "";
+  beratBahanInput.value = "";
+
+  // Fungsi untuk menghapus bahan dari array dan memperbarui tampilan
+function hapusBahan(namaBahan, elemenBahan) {
+    // Hapus bahan dari array
+    addedIngredientsArray = addedIngredientsArray.filter(
+      (bahan) => bahan.nama !== namaBahan
+    );
   
-  function cariBahan() {
-    var hasilPencarian = {};
-    var totalZat = {
-        Air: 0,
-        Energi: 0,
-        Protein: 0,
-        Lemak: 0,
-        Karbohidrat: 0,
-        Serat: 0,
-        Abu: 0,
-        Kalsium: 0,
-        Fosfor: 0,
-        Besi: 0,
-        Natrium: 0,
-        Kalium: 0,
-        Tembaga: 0,
-        Seng: 0,
-        Retinol: 0,
-        B_Karoten: 0,
-        Karoten_Total: 0,
-        Thiamin: 0,
-        Riboflavin: 0,
-        Niasin: 0,
-        Vitamin_C: 0,
-        BDD: 0,
-    };
+    // Hapus elemen bahan dari tampilan
+    elemenBahan.remove();
+  }
+}
 
-    for (var i = 0; i < addedIngredientsArray.length; i++) {
-        var namaBahan = addedIngredientsArray[i].nama;
-        var beratBahan = addedIngredientsArray[i].berat;
+function cariBahan() {
+  var hasilPencarian = {};
+  var totalZat = {
+    Air: 0,
+    Energi: 0,
+    Protein: 0,
+    Lemak: 0,
+    Karbohidrat: 0,
+    Serat: 0,
+    Abu: 0,
+    Kalsium: 0,
+    Fosfor: 0,
+    Besi: 0,
+    Natrium: 0,
+    Kalium: 0,
+    Tembaga: 0,
+    Seng: 0,
+    Retinol: 0,
+    B_Karoten: 0,
+    Karoten_Total: 0,
+    Thiamin: 0,
+    Riboflavin: 0,
+    Niasin: 0,
+    Vitamin_C: 0,
+    BDD: 0,
+  };
 
-        if (dataBahan.hasOwnProperty(namaBahan)) {
-            if (!hasilPencarian[namaBahan]) {
-                hasilPencarian[namaBahan] = {
-                    Air: 0,
-                    Energi: 0,
-                    Protein: 0,
-                    Lemak: 0,
-                    Karbohidrat: 0,
-                    Serat: 0,
-                    Abu: 0,
-                    Kalsium: 0,
-                    Fosfor: 0,
-                    Besi: 0,
-                    Natrium: 0,
-                    Kalium: 0,
-                    Tembaga: 0,
-                    Seng: 0,
-                    Retinol: 0,
-                    B_Karoten: 0,
-                    Karoten_Total: 0,
-                    Thiamin: 0,
-                    Riboflavin: 0,
-                    Niasin: 0,
-                    Vitamin_C: 0,
-                    BDD: 0,
-                };
-            }
+  for (var i = 0; i < addedIngredientsArray.length; i++) {
+    var namaBahan = addedIngredientsArray[i].nama;
+    var beratBahan = addedIngredientsArray[i].berat;
 
-            // Hitung nilai zat gizi
-            hasilPencarian[namaBahan].Air += (beratBahan / 100) * dataBahan[namaBahan]["Air"];
-            hasilPencarian[namaBahan].Energi += (beratBahan / 100) * dataBahan[namaBahan]["Energi"];
-            hasilPencarian[namaBahan].Protein += (beratBahan / 100) * dataBahan[namaBahan]["Protein"];
-            hasilPencarian[namaBahan].Lemak += (beratBahan / 100) * dataBahan[namaBahan]["Lemak"];
-            hasilPencarian[namaBahan].Karbohidrat += (beratBahan / 100) * dataBahan[namaBahan]["Karbohidrat"];
-            hasilPencarian[namaBahan].Serat += (beratBahan / 100) * dataBahan[namaBahan]["Serat"];
-            hasilPencarian[namaBahan].Abu += (beratBahan / 100) * dataBahan[namaBahan]["Abu"];
-            hasilPencarian[namaBahan].Kalsium += (beratBahan / 100) * dataBahan[namaBahan]["Kalsium"];
-            hasilPencarian[namaBahan].Fosfor += (beratBahan / 100) * dataBahan[namaBahan]["Fosfor"];
-            hasilPencarian[namaBahan].Besi += (beratBahan / 100) * dataBahan[namaBahan]["Besi"];
-            hasilPencarian[namaBahan].Natrium += (beratBahan / 100) * dataBahan[namaBahan]["Natrium"];
-            hasilPencarian[namaBahan].Kalium += (beratBahan / 100) * dataBahan[namaBahan]["Kalium"];
-            hasilPencarian[namaBahan].Tembaga += (beratBahan / 100) * dataBahan[namaBahan]["Tembaga"];
-            hasilPencarian[namaBahan].Seng += (beratBahan / 100) * dataBahan[namaBahan]["Seng"];
-            hasilPencarian[namaBahan].Retinol += (beratBahan / 100) * dataBahan[namaBahan]["Retinol"];
-            hasilPencarian[namaBahan].B_Karoten += (beratBahan / 100) * dataBahan[namaBahan]["B-Karoten"];
-            hasilPencarian[namaBahan].Karoten_Total += (beratBahan / 100) * dataBahan[namaBahan]["Karoten Total"];
-            hasilPencarian[namaBahan].Thiamin += (beratBahan / 100) * dataBahan[namaBahan]["Thiamin"];
-            hasilPencarian[namaBahan].Riboflavin += (beratBahan / 100) * dataBahan[namaBahan]["Riboflavin"];
-            hasilPencarian[namaBahan].Niasin += (beratBahan / 100) * dataBahan[namaBahan]["Niasin"];
-            hasilPencarian[namaBahan].Vitamin_C += (beratBahan / 100) * dataBahan[namaBahan]["Vitamin-C"];
-            hasilPencarian[namaBahan].BDD += (beratBahan / 100) * dataBahan[namaBahan]["BDD"];
-            
-            // Tambahkan hasil pencarian ke dalam total zat
-            totalZat.Air += hasilPencarian[namaBahan].Air;
-            totalZat.Energi += hasilPencarian[namaBahan].Energi;
-            totalZat.Protein += hasilPencarian[namaBahan].Protein;
-            totalZat.Lemak += hasilPencarian[namaBahan].Lemak;
-            totalZat.Karbohidrat += hasilPencarian[namaBahan].Karbohidrat;
-            totalZat.Serat += hasilPencarian[namaBahan].Serat;
-            totalZat.Abu += hasilPencarian[namaBahan].Abu;
-            totalZat.Kalsium += hasilPencarian[namaBahan].Kalsium;
-            totalZat.Fosfor += hasilPencarian[namaBahan].Fosfor;
-            totalZat.Besi += hasilPencarian[namaBahan].Besi;
-            totalZat.Natrium += hasilPencarian[namaBahan].Natrium;
-            totalZat.Kalium += hasilPencarian[namaBahan].Kalium;
-            totalZat.Tembaga += hasilPencarian[namaBahan].Tembaga;
-            totalZat.Seng += hasilPencarian[namaBahan].Seng;
-            totalZat.Retinol += hasilPencarian[namaBahan].Retinol;
-            totalZat.B_Karoten += hasilPencarian[namaBahan].B_Karoten;
-            totalZat.Karoten_Total += hasilPencarian[namaBahan].Karoten_Total;
-            totalZat.Thiamin += hasilPencarian[namaBahan].Thiamin;
-            totalZat.Riboflavin += hasilPencarian[namaBahan].Riboflavin;
-            totalZat.Niasin += hasilPencarian[namaBahan].Niasin;
-            totalZat.Vitamin_C += hasilPencarian[namaBahan].Vitamin_C;
-            totalZat.BDD += hasilPencarian[namaBahan].BDD;
-        }
+    if (dataBahan.hasOwnProperty(namaBahan)) {
+      if (!hasilPencarian[namaBahan]) {
+        hasilPencarian[namaBahan] = {
+          Air: 0,
+          Energi: 0,
+          Protein: 0,
+          Lemak: 0,
+          Karbohidrat: 0,
+          Serat: 0,
+          Abu: 0,
+          Kalsium: 0,
+          Fosfor: 0,
+          Besi: 0,
+          Natrium: 0,
+          Kalium: 0,
+          Tembaga: 0,
+          Seng: 0,
+          Retinol: 0,
+          B_Karoten: 0,
+          Karoten_Total: 0,
+          Thiamin: 0,
+          Riboflavin: 0,
+          Niasin: 0,
+          Vitamin_C: 0,
+          BDD: 0,
+        };
+      }
+
+      // Hitung nilai zat gizi
+      hasilPencarian[namaBahan].Air +=
+        (beratBahan / 100) * dataBahan[namaBahan]["Air"];
+      hasilPencarian[namaBahan].Energi +=
+        (beratBahan / 100) * dataBahan[namaBahan]["Energi"];
+      hasilPencarian[namaBahan].Protein +=
+        (beratBahan / 100) * dataBahan[namaBahan]["Protein"];
+      hasilPencarian[namaBahan].Lemak +=
+        (beratBahan / 100) * dataBahan[namaBahan]["Lemak"];
+      hasilPencarian[namaBahan].Karbohidrat +=
+        (beratBahan / 100) * dataBahan[namaBahan]["Karbohidrat"];
+      hasilPencarian[namaBahan].Serat +=
+        (beratBahan / 100) * dataBahan[namaBahan]["Serat"];
+      hasilPencarian[namaBahan].Abu +=
+        (beratBahan / 100) * dataBahan[namaBahan]["Abu"];
+      hasilPencarian[namaBahan].Kalsium +=
+        (beratBahan / 100) * dataBahan[namaBahan]["Kalsium"];
+      hasilPencarian[namaBahan].Fosfor +=
+        (beratBahan / 100) * dataBahan[namaBahan]["Fosfor"];
+      hasilPencarian[namaBahan].Besi +=
+        (beratBahan / 100) * dataBahan[namaBahan]["Besi"];
+      hasilPencarian[namaBahan].Natrium +=
+        (beratBahan / 100) * dataBahan[namaBahan]["Natrium"];
+      hasilPencarian[namaBahan].Kalium +=
+        (beratBahan / 100) * dataBahan[namaBahan]["Kalium"];
+      hasilPencarian[namaBahan].Tembaga +=
+        (beratBahan / 100) * dataBahan[namaBahan]["Tembaga"];
+      hasilPencarian[namaBahan].Seng +=
+        (beratBahan / 100) * dataBahan[namaBahan]["Seng"];
+      hasilPencarian[namaBahan].Retinol +=
+        (beratBahan / 100) * dataBahan[namaBahan]["Retinol"];
+      hasilPencarian[namaBahan].B_Karoten +=
+        (beratBahan / 100) * dataBahan[namaBahan]["B-Karoten"];
+      hasilPencarian[namaBahan].Karoten_Total +=
+        (beratBahan / 100) * dataBahan[namaBahan]["Karoten Total"];
+      hasilPencarian[namaBahan].Thiamin +=
+        (beratBahan / 100) * dataBahan[namaBahan]["Thiamin"];
+      hasilPencarian[namaBahan].Riboflavin +=
+        (beratBahan / 100) * dataBahan[namaBahan]["Riboflavin"];
+      hasilPencarian[namaBahan].Niasin +=
+        (beratBahan / 100) * dataBahan[namaBahan]["Niasin"];
+      hasilPencarian[namaBahan].Vitamin_C +=
+        (beratBahan / 100) * dataBahan[namaBahan]["Vitamin-C"];
+      hasilPencarian[namaBahan].BDD +=
+        (beratBahan / 100) * dataBahan[namaBahan]["BDD"];
+
+      // Tambahkan hasil pencarian ke dalam total zat
+      totalZat.Air += hasilPencarian[namaBahan].Air;
+      totalZat.Energi += hasilPencarian[namaBahan].Energi;
+      totalZat.Protein += hasilPencarian[namaBahan].Protein;
+      totalZat.Lemak += hasilPencarian[namaBahan].Lemak;
+      totalZat.Karbohidrat += hasilPencarian[namaBahan].Karbohidrat;
+      totalZat.Serat += hasilPencarian[namaBahan].Serat;
+      totalZat.Abu += hasilPencarian[namaBahan].Abu;
+      totalZat.Kalsium += hasilPencarian[namaBahan].Kalsium;
+      totalZat.Fosfor += hasilPencarian[namaBahan].Fosfor;
+      totalZat.Besi += hasilPencarian[namaBahan].Besi;
+      totalZat.Natrium += hasilPencarian[namaBahan].Natrium;
+      totalZat.Kalium += hasilPencarian[namaBahan].Kalium;
+      totalZat.Tembaga += hasilPencarian[namaBahan].Tembaga;
+      totalZat.Seng += hasilPencarian[namaBahan].Seng;
+      totalZat.Retinol += hasilPencarian[namaBahan].Retinol;
+      totalZat.B_Karoten += hasilPencarian[namaBahan].B_Karoten;
+      totalZat.Karoten_Total += hasilPencarian[namaBahan].Karoten_Total;
+      totalZat.Thiamin += hasilPencarian[namaBahan].Thiamin;
+      totalZat.Riboflavin += hasilPencarian[namaBahan].Riboflavin;
+      totalZat.Niasin += hasilPencarian[namaBahan].Niasin;
+      totalZat.Vitamin_C += hasilPencarian[namaBahan].Vitamin_C;
+      totalZat.BDD += hasilPencarian[namaBahan].BDD;
     }
+  }
 
-    // Tampilkan total zat ke dalam elemen HTML
+  if (addedIngredientsArray.length > 0) {
+    // Jika ada setidaknya satu bahan dalam array, jalankan perhitungan
     tampilkanTotalZat(totalZat);
-    tampilkanHasilPencarian();
     tampilkanBahanTersimpan();
     tampilkanHasilPencarianSemuanya(hasilPencarian);
 
-    
-        // Tampilkan elemen hasil dan total
-        document.getElementById("hasil").style.display = "block";
-        document.getElementById("total").style.display = "block";
-    }
-    
-    function sembunyikanHasilTotal() {
-        // Sembunyikan elemen hasil dan total sebelum pencarian
-        document.getElementById("hasil").style.display = "none";
-        document.getElementById("total").style.display = "none";
-    }
-    
-    // ...
-    
-    // Panggil fungsi sembunyikanHasilTotal() saat halaman dimuat
-    document.addEventListener("DOMContentLoaded", sembunyikanHasilTotal);
-function tampilkanHasilPencarian(data) {
-    // Tampilkan nilai zat gizi di dalam elemen HTML
-    // Sesuaikan dengan ID elemen HTML di mana Anda ingin menampilkan hasilnya
-    for (var namaBahan in data) {
-        var detailAirElemen = document.getElementById("detailAir");
-        var detailEnergiElemen = document.getElementById("detailEnergi");
-        var detailProteinElemen = document.getElementById("detailProtein");
-        // Tambahkan ID zat gizi lainnya sesuai kebutuhan
-        
-        // Pastikan elemen dengan ID tersebut ditemukan sebelum mencoba mengubah isinya
-        if (detailAirElemen && detailEnergiElemen && detailProteinElemen) {
-            detailAirElemen.textContent = data[namaBahan].Air.toFixed(2);
-            detailEnergiElemen.textContent = data[namaBahan].Energi.toFixed(2);
-            detailProteinElemen.textContent = data[namaBahan].Protein.toFixed(2);
-            // Tambahkan pernyataan serupa untuk zat gizi lainnya
-        }
-    }
+    // Tampilkan elemen hasil dan total
+    document.getElementById("hasil").style.display = "block";
+    document.getElementById("total").style.display = "block";
+  } else {
+    // Jika tidak ada bahan dalam array, tampilkan pemberitahuan
+    alert("Masukkan minimal satu bahan sebelum melakukan pencarian.");
+    sembunyikanHasilTotal();
+    tampilkanBahanTersimpan();
+  }
 }
+
+function sembunyikanHasilTotal() {
+  // Sembunyikan elemen hasil dan total sebelum pencarian
+  document.getElementById("hasil").style.display = "none";
+  document.getElementById("total").style.display = "none";
+}
+
+// ...
+
+// Panggil fungsi sembunyikanHasilTotal() saat halaman dimuat
+document.addEventListener("DOMContentLoaded", sembunyikanHasilTotal);
+
 function tampilkanBahanTersimpan() {
-    var bahanBahanDiv = document.getElementById("bahanBahan");
+  var bahanBahanDiv = document.getElementById("bahanBahan");
 
-    // Bersihkan isi div sebelum menambahkan nama bahan
-    bahanBahanDiv.innerHTML = "";
+  // Bersihkan isi div sebelum menambahkan nama bahan
+  bahanBahanDiv.innerHTML = "";
 
-    // Iterasi melalui array bahan yang tersimpan
-    for (var i = 0; i < addedIngredientsArray.length; i++) {
-        var namaBahan = addedIngredientsArray[i].nama;
+  // Iterasi melalui array bahan yang tersimpan
+  for (var i = 0; i < addedIngredientsArray.length; i++) {
+    var namaBahan = addedIngredientsArray[i].nama;
 
-        // Tambahkan nama bahan ke dalam isi div
-        bahanBahanDiv.innerHTML += namaBahan + "<br>";
-    }
+    // Tambahkan nama bahan ke dalam isi div
+    bahanBahanDiv.innerHTML += namaBahan + "<br>";
+  }
 }
 
 function tampilkanHasilPencarianSemuanya(hasilPencarian) {
-    // Dapatkan elemen hasil div
-    var hasilDiv = document.getElementById("hasil");
+  // Dapatkan elemen hasil div
+  var hasilDiv = document.getElementById("hasil");
 
-    // Bersihkan isi div sebelum menambahkan hasil baru
-    hasilDiv.innerHTML = "";
+  // Bersihkan isi div sebelum menambahkan hasil baru
+  hasilDiv.innerHTML = "";
 
-    // Iterasi melalui hasil pencarian
-    for (var namaBahan in hasilPencarian) {
-        // Buat div baru untuk hasil
-        var hasilBahanDiv = document.createElement("div");
-        hasilBahanDiv.className = "flex flex-col justify-center items-center";
+  // Iterasi melalui hasil pencarian
+  for (var namaBahan in hasilPencarian) {
+    // Buat div baru untuk hasil
+    var hasilBahanDiv = document.createElement("div");
+    hasilBahanDiv.className = "flex flex-col justify-center items-center mt-6";
 
-        // Buat button untuk nama bahan
-        var button = document.createElement("button");
-        button.className = "w-44 mb-4 h-8 items-center justify-center optional:text-gray-400 optional:text-xs bg-transparent border border-gray-400 hover:border-gray-500 rounded leading-tight focus:outline-none";
-        button.onclick = function () {
-            // Handle event saat button di klik
-            // Anda dapat menambahkan logika sesuai kebutuhan
-        };
+    // Buat button untuk nama bahan
+    var button = document.createElement("button");
+    button.className =
+      "w-48 mb-4 h-full items-center justify-center optional:text-gray-400 optional:text-xs bg-transparent border border-gray-400 hover:border-gray-500 rounded leading-tight focus:outline-none";
+    button.onclick = function () {
+      // Handle event saat button di klik
+      // Anda dapat menambahkan logika sesuai kebutuhan
+    };
 
-        // Buat div untuk nama bahan di dalam button
-        var bahanDiv = document.createElement("div");
-        bahanDiv.id = "bahanBahan";
-        bahanDiv.className = "h-full items-center flex justify-center text-center";
-        bahanDiv.textContent = namaBahan; // Isi dengan nama bahan
+    // Buat div untuk nama bahan di dalam button
+    var bahanDiv = document.createElement("div");
+    bahanDiv.id = "bahanBahan";
+    bahanDiv.className = "h-full px-2 py-2 items-center flex justify-center text-center";
+    bahanDiv.textContent = namaBahan; // Isi dengan nama bahan
 
-        // Tambahkan div nama bahan ke dalam button
-        button.appendChild(bahanDiv);
+    // Tambahkan div nama bahan ke dalam button
+    button.appendChild(bahanDiv);
 
-        // Tambahkan button ke dalam hasilBahanDiv
-        hasilBahanDiv.appendChild(button);
+    // Tambahkan button ke dalam hasilBahanDiv
+    hasilBahanDiv.appendChild(button);
 
-        // Buat container detail baru
-        var containerDetailDiv = document.createElement("div");
-        containerDetailDiv.className = "flex flex-row justify-center items-center gap-10";
+    // Buat container detail baru
+    var containerDetailDiv = document.createElement("div");
+    containerDetailDiv.className =
+      "flex flex-row justify-center items-center gap-10";
 
-        // Iterasi melalui data zat gizi bahan tertentu
-        var count = 0; // Hitung zat gizi
-        for (var zatGizi in hasilPencarian[namaBahan]) {
-            // Buat div untuk setiap zat gizi
-            var zatGiziDiv = document.createElement("div");
-            zatGiziDiv.className = "flex flex-col justify-center items-center w-20";
+    // Iterasi melalui data zat gizi bahan tertentu
+    var count = 0; // Hitung zat gizi
+    for (var zatGizi in hasilPencarian[namaBahan]) {
+      // Buat div untuk setiap zat gizi
+      var zatGiziDiv = document.createElement("div");
+      zatGiziDiv.className = "flex flex-col justify-center items-center w-20";
 
-            // Buat label dan nilai untuk zat gizi
-            var label = document.createElement("label");
-            label.className = "text-green-800 text-sm text-center tracking-wider";
-            label.textContent = zatGizi;
+      // Buat label dan nilai untuk zat gizi
+      var label = document.createElement("label");
+      label.className = "text-green-800 text-xs text-center tracking-wider";
+      label.textContent = zatGizi;
 
-            var nilaiDiv = document.createElement("div");
-            nilaiDiv.id = "detail" + zatGizi; // Sesuaikan dengan ID yang sesuai
-            nilaiDiv.className = "w-20 text-center mb-4 border border-slate-400";
-            nilaiDiv.textContent = hasilPencarian[namaBahan][zatGizi].toFixed(2); // Isi dengan nilai zat gizi
+      var nilaiDiv = document.createElement("div");
+      nilaiDiv.id = "detail" + zatGizi; // Sesuaikan dengan ID yang sesuai
+      nilaiDiv.className = "w-16 text-xs py-2 text-center mb-4 border mt-1 border-slate-400";
+      nilaiDiv.textContent = hasilPencarian[namaBahan][zatGizi].toFixed(2); // Isi dengan nilai zat gizi
 
-            // Tambahkan label dan nilai ke dalam zatGiziDiv
-            zatGiziDiv.appendChild(label);
-            zatGiziDiv.appendChild(nilaiDiv);
+      // Tambahkan label dan nilai ke dalam zatGiziDiv
+      zatGiziDiv.appendChild(label);
+      zatGiziDiv.appendChild(nilaiDiv);
 
-            // Tambahkan zatGiziDiv ke dalam containerDetailDiv
-            containerDetailDiv.appendChild(zatGiziDiv);
+      // Tambahkan zatGiziDiv ke dalam containerDetailDiv
+      containerDetailDiv.appendChild(zatGiziDiv);
 
-            // Perbarui hitungan zat gizi
-            count++;
+      // Perbarui hitungan zat gizi
+      count++;
 
-            // Jika sudah mencapai dua zat gizi, buat container detail baru
-            if (count % 2 === 0) {
-                // Tambahkan containerDetailDiv ke dalam hasilBahanDiv
-                hasilBahanDiv.appendChild(containerDetailDiv);
+      // Jika sudah mencapai dua zat gizi, buat container detail baru
+      if (count % 2 === 0) {
+        // Tambahkan containerDetailDiv ke dalam hasilBahanDiv
+        hasilBahanDiv.appendChild(containerDetailDiv);
 
-                // Buat containerDetailDiv baru
-                containerDetailDiv = document.createElement("div");
-                containerDetailDiv.className = "flex flex-row justify-center items-center gap-10";
-            }
-        }
-
-        // Jika ada zat gizi yang belum dimasukkan ke dalam containerDetailDiv
-        if (count % 2 !== 0) {
-            // Tambahkan containerDetailDiv ke dalam hasilBahanDiv
-            hasilBahanDiv.appendChild(containerDetailDiv);
-        }
-
-        // Tambahkan hasilBahanDiv ke dalam hasilDiv
-        hasilDiv.appendChild(hasilBahanDiv);
+        // Buat containerDetailDiv baru
+        containerDetailDiv = document.createElement("div");
+        containerDetailDiv.className =
+          "flex flex-row justify-center items-center gap-9";
+      }
     }
+
+    // Jika ada zat gizi yang belum dimasukkan ke dalam containerDetailDiv
+    if (count % 2 !== 0) {
+      // Tambahkan containerDetailDiv ke dalam hasilBahanDiv
+      hasilBahanDiv.appendChild(containerDetailDiv);
+    }
+
+    // Tambahkan hasilBahanDiv ke dalam hasilDiv
+    hasilDiv.appendChild(hasilBahanDiv);
+  }
 }
 
 function tampilkanTotalZat(totalZat) {
-    // Tampilkan total zat di dalam elemen HTML
-    var jumlahTotalElemen = document.getElementById("jumlahTotal");
-    var containerDetailTotalElemen = document.getElementById("containerDetailTotal");
+  // Tampilkan total zat di dalam elemen HTML
+  var jumlahTotalElemen = document.getElementById("jumlahTotal");
+  var containerDetailTotalElemen = document.getElementById(
+    "containerDetailTotal"
+  );
 
-    if (jumlahTotalElemen && containerDetailTotalElemen) {
-        jumlahTotalElemen.textContent = "Total Zat";
+  if (jumlahTotalElemen && containerDetailTotalElemen) {
+    jumlahTotalElemen.textContent = "Total Zat";
 
-        // Iterasi melalui total zat
-        for (var zatGizi in totalZat) {
-            // Dapatkan elemen detail total zat
-            var detailTotalElemen = document.getElementById("totalDetail" + zatGizi);
+    // Iterasi melalui total zat
+    for (var zatGizi in totalZat) {
+      // Dapatkan elemen detail total zat
+      var detailTotalElemen = document.getElementById("totalDetail" + zatGizi);
 
-            // Pastikan elemen dengan ID tersebut ditemukan sebelum mencoba mengubah isinya
-            if (detailTotalElemen) {
-                detailTotalElemen.textContent = totalZat[zatGizi].toFixed(2);
-            }
-        }
+      // Pastikan elemen dengan ID tersebut ditemukan sebelum mencoba mengubah isinya
+      if (detailTotalElemen) {
+        detailTotalElemen.textContent = totalZat[zatGizi].toFixed(2);
+      }
     }
+  }
 }
 
-
+function resetBahan() {
+    // Reset array bahan yang sudah ditambahkan
+    addedIngredientsArray = [];
+  
+    // Reset tampilan bahan yang disimpan
+    tampilkanBahanTersimpan();
+  
+    // Hapus semua bahan yang ditampilkan di div menuMakan
+    menuMakanDiv.innerHTML = "";
+  
+    // Sembunyikan lagi detail zat dan total zat
+    sembunyikanHasilTotal();
+  }
