@@ -15,9 +15,13 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
 
+
+
+
 </head>
 
-<body x-data="{navOpen : false}" class="bg-white">
+<body x-data="{ navOpen: false, hasilPerBahanOpen: false, bahanList: [], hasilBahanList: [] }" class="bg-white">
+
     <nav x-data="{open : false}" class=" w-screen h-12 top-0 bottom-0 fixed md:w-80 z-50">
         <div
             class=" py-2 px-8 md:px-0 flex flex-row justify-between items-center hover:cursor-pointer sm:pr-10 md:pr-0 bg-white">
@@ -152,9 +156,9 @@
                             <p>Kebutuhan Energi Katch - Harris Bennedict</p>
                         </a>
                         <a href="hitungBMI.html"
-                            class="flex flex-row hover:text-yellow-700 pl-3 items-center space-x-2 text-yellow-700">
+                            class="flex flex-row hover:text-yellow-700 pl-3 items-center space-x-2 ">
                             <ion-icon name="body-outline"></ion-icon>
-                            <p>Indeks Masa Tubuh (IMT / BMI)</p>
+                            <p>Indeks Masa Tubuh (IMT / BMT)</p>
                         </a>
 
                         <a href="kebutuhanAir.html"
@@ -173,7 +177,7 @@
                             <p>Hitung Zat Gizi Bahan</p>
                         </a>
                         <a href="menuMakan.html"
-                            class="flex flex-row hover:text-yellow-700 pl-3 items-center space-x-2 ">
+                            class="flex flex-row hover:text-yellow-700 pl-3 items-center space-x-2 text-yellow-700">
                             <ion-icon name="restaurant-outline"></ion-icon>
                             <p>Hitung Zat Menu Makan</p>
                         </a>
@@ -215,84 +219,99 @@
             </ul>
         </div>
     </nav>
-    
+
     <section class="bg-white">
-        <main class="flex flex-col justify-center items-center h-full">
-            <div class="backdrop-filter backdrop-blur-sm bg-opacity-20 mt-20 bg-green-900 w-72 md:w-72 lg:w-96 border-[0.8px] h-full py-10 border-slate-100 rounded-xl pt-10">
-                <h1 class="text-center text-xl font-extrabold text-green-800 border-b-2 pb-6 font-sans tracking-widest">
-                    BMI</h1>
-                <div class="flex flex-col items-center space-y-2 pt-4">
-                    <label class="text-green-800 text-sm text-center tracking-wider" for="gender">Gender</label>
-                    <select id="gender" name="gender"
-                            class="block appearance-none w-48 optional:text-gray-400 optional:text-xs bg-transparent border border-gray-400 hover:border-gray-500 px-4 py-2 rounded leading-tight focus:outline-none">
-                        <option value="male">Laki-laki</option>
-                        <option value="female">Perempuan</option>
-                    </select>
-                    <label class="text-green-800 text-sm text-center mb-2 tracking-wider" for="age">Usia</label>
-                    <input class="xl:w-64 lg:w-54 md:w-44 sm:w-24 xs:w-18 h-10 bg-transparent text-white placeholder:italic pl-6 placeholder:text-xs placeholder:tracking-widest rounded-md border border-slate-400 focus:outline-none"
-                           type="number" id="age" placeholder="Tahun">
-                    <label class="text-green-800 text-sm text-center mb-2 tracking-wider" for="height">Tinggi Badan (cm)</label>
-                    <input class="xl:w-64 lg:w-54 md:w-44 sm:w-24 xs:w-18 h-10 bg-transparent text-white placeholder:italic pl-6 placeholder:text-xs placeholder:tracking-widest rounded-md border border-slate-400 focus:outline-none"
-                           type="number" id="height" placeholder="CM">
-                    <label class="text-green-800 text-sm text-center mb-2 tracking-wider" for="weight">Berat Badan (kg)</label>
-                    <input class="xl:w-64 lg:w-54 md:w-44 sm:w-24 xs:w-18 h-10 bg-transparent text-white placeholder:italic pl-6 placeholder:text-xs placeholder:tracking-widest rounded-md border border-slate-400 focus:outline-none"
-                           type="number" id="weight" placeholder="KG">
-                    <button onclick="hitungBMI()"
-                            class="text-sm pb-2 font-bold pt-5 md:pt-6 font-serif text-green-600 hover:text-green-800 hover:scale-110">Hitung
-                    </button>
-                    <div class="mt-4 text-center text-xs font-light" id="result-container">
-                        <!-- BMI result and category will be displayed here -->
+        <main class="flex flex-col items-center h-auto pb-6">
+            <div
+                class="backdrop-filter backdrop-blur-sm bg-opacity-20 mt-20 bg-green-900 w-72  border-[0.8px] py-10 h-auto border-slate-100 rounded-xl pt-10">
+                <h1 class="text-center text-xl font-extrabold text-green-800 border-b-2 pb-6 font-sans tracking-wide">
+                    Menu makan</h1>
+
+                <div id="menuMakan" class="flex flex-col items-center h-auto">
+                    <!-- Tempat bahan-bahan baru akan ditambahkan -->
+                </div>
+
+                <div class="flex flex-row  items-center space-y-2 pt-4 gap-4 justify-center">
+                    <div class="flex flex-col h-auto justify-center items-center ">
+                        <label class="text-green-800 text-xs text-center tracking-wider pt-2 pb-2" for="namaBahanInput">
+                            Bahan</label>
+                        <input type="text" id="namaBahanInput" placeholder="Masukkan nama bahan" list="namaBahanOptions"
+                            class="w-44 optional:text-gray-400 optional:text-xs bg-transparent border border-gray-400 hover:border-gray-500 px-4 py-2 rounded leading-tight focus:outline-none">
+                        <datalist id="namaBahanOptions"></datalist>
                     </div>
-                    <div class="text-center text-sm text-red-500 font-medium w-full translate-y-6" id="error-message"></div>
+
+                    <div class="flex flex-col h-auto justify-center items-center ">
+                        <label class="text-green-800 text-xs text-center tracking-wider pb-2"
+                            for="beratBahanInput">Berat
+                            (gram)</label>
+                        <input type="number" id="beratBahanInput" placeholder="berat"
+                            class="w-16 optional:text-gray-400 optional:text-xs bg-transparent border border-gray-400 hover:border-gray-500 px-1 py-2 rounded leading-tight focus:outline-none">
+
+                    </div>
 
                 </div>
+
+                <div class="flex flex-row justify-center items-center gap-10 mb-6 ">
+                    <button onclick="tambahBahan()"
+                        class="text-sm font-bold pt-3 md:pt-6 font-serif text-green-800 hover:text-green-800 hover:scale-110">Tambah</button>
+                    <button id="hitungButton" onclick="hitungBahan()"
+                        class="text-sm pb-2 font-bold pt-5 md:pt-6 font-serif text-green-800 hover:text-green-800 hover:scale-110">
+                        Hitung
+                    </button>
+
+                </div>
+
+
+                <div class="hasil flex flex-col items-center h-auto" id="hasil" style="display: block;">
+                    <!-- <button @click="hasilPerBahanOpen = !hasilPerBahanOpen" id="hasilButton"
+                        class="w-44 h-8 items-center optional:text-gray-400 optional:text-xs bg-transparent border border-gray-400 hover:border-gray-500 px-4 py-2 rounded leading-tight focus:outline-none">
+                        Tuliskan Nama Bahan yang ditambahkan
+                    </button>
+
+                    <div x-show="hasilPerBahanOpen" class="flex flex-col justify-center items-center py-4">
+                        <div class="flex flex-row justify-center items-center gap-10">
+                            <div class="flex flex-col justify-center items-center w-20">
+                                <label class="text-green-800 text-xs text-center tracking-wider" for="age">Air</label>
+                                <div id="detailAir" class="w-20 text-center mb-4 border border-slate-400"></div>
+                            </div>
+                            <div class="flex flex-col justify-center items-center w-20">
+                                <label class="text-green-800 text-xs text-center tracking-wider"
+                                    for="age">Energi</label>
+                                <div id="detailEnergi" class="w-20 text-center mb-4 border border-slate-400"></div>
+                            </div>
+                        </div>
+
+                    </div> 
+                    <div class="flex flex-row justify-center items-center gap-10">
+                        <div class="flex flex-col justify-center items-center w-20">
+                            <label class="text-green-800 text-xs text-center tracking-wider" for="age">Air</label>
+                            <div id="detailAir" class="w-20 text-center mb-4 border border-slate-400"></div>
+                        </div>
+                        <div class="flex flex-col justify-center items-center w-20">
+                            <label class="text-green-800 text-xs text-center tracking-wider" for="age">Energi</label>
+                            <div id="detailEnergi" class="w-20 text-center mb-4 border border-slate-400"></div>
+                        </div>
+                    </div> -->
+                </div>
+
+
+                <!-- <button
+                    class="w-44 optional:text-gray-400 optional:text-xs bg-transparent border border-gray-400 hover:border-gray-500 px-4 py-2 rounded leading-tight focus:outline-none">
+                    Total
+                </button> -->
+
+
+
+
+
+
+
+            </div>
             </div>
         </main>
 
-        <script>
-            function hitungBMI() {
-                // Get input values
-                const gender = document.getElementById("gender").value;
-                const age = parseInt(document.getElementById("age").value);
-                const height = parseFloat(document.getElementById("height").value);
-                const weight = parseFloat(document.getElementById("weight").value);
-        
-                // Check if inputs are valid
-                if (isNaN(age) || isNaN(height) || isNaN(weight) || age <= 0 || height <= 0 || weight <= 0) {
-                    document.getElementById("error-message").innerText = "Mohon isi semua kolom dengan angka yang valid.";
-                    return;
-                } else {
-                    document.getElementById("error-message").innerText = "";
-                }
-        
-                // Calculate BMI
-                const heightInMeters = height / 100;
-                const bmi = weight / (heightInMeters * heightInMeters);
-        
-                // Categorize BMI
-                let category;
-                if (bmi < 18.5) {
-                    category = "Berat badan kurang (Underweight)";
-                } else if (bmi >= 18.5 && bmi <= 24.9) {
-                    category = "Berat badan normal (Normal weight)";
-                } else if (bmi >= 25 && bmi <= 29.9) {
-                    category = "Berat badan berlebih (Overweight)";
-                } else {
-                    category = "Obesitas (Obesity)";
-                }
-        
-                // Display result
-                const resultContainer = document.getElementById("result-container");
-                resultContainer.innerHTML = `<p class="text-green-800 font-semibold">Hasil BMI: ${bmi.toFixed(2)}</p>
-                                             <p class="text-green-800 font-semibold">${category}</p>`;
-            }
-        </script>
     </section>
-    <!-- <footer
-        class="text-slate-300 text-xs absolute flex flex-col translate-y-10 justify-center items-center text-center backdrop-blur-sm w-screen h-[6.4%] leading-5">
-        <p>This website was developed by Dimas Fiebry</p>
-        <p>Copyright ©2023 All Rights Reserved</p>
-    </footer> -->
+
 
 
 
@@ -300,7 +319,11 @@
 
 </body>
 
+<!-- Include Alpine.js -->
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
 
+
+<script src="../js/menuMakan.js"></script>
 <!-- <script src="https://unpkg.com/lucide@latest"></script> -->
 <!-- <script src="js/script.js"></script> -->
 <script src="https://unpkg.com/lucide@latest"></script>
