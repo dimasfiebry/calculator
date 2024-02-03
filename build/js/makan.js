@@ -2598,6 +2598,15 @@ function hapusBahan(namaBahan, elemenBahan) {
   
     // Hapus elemen bahan dari tampilan
     elemenBahan.remove();
+    if (addedIngredientsArray.length > 0) {
+        // Jika ada setidaknya satu bahan dalam array, jalankan perhitungan
+        cariBahan();
+      } else {
+        
+        sembunyikanHasilTotal();
+        tampilkanBahanTersimpan();
+      }
+    
   }
 }
 
