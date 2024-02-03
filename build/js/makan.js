@@ -2899,6 +2899,8 @@ function tampilkanTotalZat(totalZat) {
 function resetBahan() {
     // Reset array bahan yang sudah ditambahkan
     addedIngredientsArray = [];
+    namaBahanInput.value = "";
+  beratBahanInput.value = "";
   
     // Reset tampilan bahan yang disimpan
     tampilkanBahanTersimpan();
